@@ -4,6 +4,9 @@
 #include <iostream>
 #include <list>
 
+#include "customer.h"
+#include "realestate.h"
+
 class agency
 {
 private:
@@ -12,7 +15,7 @@ private:
 public:
     agency();
     void addCustomer(Customer &customer);
-    void addRealEstate(RealEstate &realEstate);
+    void addRealEstate(RealEstate &RealEstate);
 };
 
 #endif // AGENCY_H

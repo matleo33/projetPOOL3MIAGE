@@ -3,7 +3,7 @@
 
 #include "Seller.h"
 
-class realEstate
+class RealEstate
 {
 protected:
     unsigned int m_price;
@@ -12,8 +12,8 @@ protected:
     Seller m_seller;
     static const int m_identifier;
 public:
-    realEstate() = delete;
-    realEstate(unsigned int price, std::string address, short surface);
+    RealEstate() = delete;
+    RealEstate(unsigned int price, std::string address, short surface);
 };
 
 #endif // REALESTATE_H

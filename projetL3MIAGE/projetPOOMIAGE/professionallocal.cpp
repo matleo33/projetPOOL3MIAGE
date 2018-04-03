@@ -1,6 +1,6 @@
 #include "professionallocal.h"
 
-professionalLocal::professionalLocal()
+ProfessionalLocal::ProfessionalLocal()
 {
 
 }

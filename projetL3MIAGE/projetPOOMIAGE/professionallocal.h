@@ -2,10 +2,10 @@
 #define PROFESSIONALLOCAL_H
 
 
-class professionalLocal
+class ProfessionalLocal
 {
 public:
-    professionalLocal();
+    ProfessionalLocal();
 };
 
 #endif // PROFESSIONALLOCAL_H

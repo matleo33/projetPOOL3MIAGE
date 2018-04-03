@@ -1,6 +1,6 @@
 #include "agency.h"
 
-agency::agency()
+Agency::Agency()
 {
 
 }
