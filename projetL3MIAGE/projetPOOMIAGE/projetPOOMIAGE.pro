@@ -9,7 +9,10 @@ SOURCES += main.cpp \
     visit.cpp \
     flat.cpp \
     house.cpp \
-    plot.cpp
+    plot.cpp \
+    realestate.cpp \
+    seller.cpp \
+    professionallocal.cpp
 
 HEADERS += \
     customer.h \
@@ -17,4 +20,7 @@ HEADERS += \
     visit.h \
     flat.h \
     house.h \
-    plot.h
+    plot.h \
+    realestate.h \
+    seller.h \
+    professionallocal.h
