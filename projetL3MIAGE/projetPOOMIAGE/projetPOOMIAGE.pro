@@ -4,7 +4,11 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    customer.cpp
+    customer.cpp \
+    buyer.cpp \
+    visit.cpp
 
 HEADERS += \
-    customer.h
+    customer.h \
+    buyer.h \
+    visit.h

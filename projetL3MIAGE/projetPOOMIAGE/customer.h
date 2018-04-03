@@ -11,7 +11,8 @@ private:
     std::string m_address;
 public:
     //Constructor
-    Customer();
+    Customer() = delete;
+    virtual Customer(std::string name, std::string firstName, std::string address);
 
     //Getters
     std::string getName() const;
