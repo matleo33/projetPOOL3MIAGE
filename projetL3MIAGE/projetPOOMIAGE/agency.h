@@ -3,19 +3,20 @@
 
 #include <iostream>
 #include <list>
+#include <map>
 
 #include "customer.h"
 #include "realestate.h"
 
-class agency
+class Agency
 {
 private:
-    std::list<Customer> customers;
-    std::list<RealEstate> realEstates;
+    std::list<Customer> m_customers;
+    std::map<Customer, RealEstate> m_realEstate;
 public:
-    agency();
+    Agency() = default;
     void addCustomer(Customer &customer);
-    void addRealEstate(RealEstate &RealEstate);
+    void addRealEstate(Customer &customer, RealEstate &RealEstate);
 };
 
 #endif // AGENCY_H

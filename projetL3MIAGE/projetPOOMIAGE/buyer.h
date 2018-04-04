@@ -13,6 +13,13 @@ private:
     std::set<Visit> m_visits;
 public:
     Buyer();
+
+    //Getters
+    bool getPurchaseProposal() const;
+    std::set<Visit> getVisits();
+
+    //Setters
+    void setPurchaseProposal(bool newValue);
 };
 
 #endif // BUYER_H
