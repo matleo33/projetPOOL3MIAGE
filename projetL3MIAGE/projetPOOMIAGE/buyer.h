@@ -1,14 +1,13 @@
 #ifndef BUYER_H
 #define BUYER_H
 
+#include <set>
 #include "customer.h"
 #include "visit.h"
 
-#include <set>
-
 class Buyer : public Customer
 {
-private:
+protected:
     bool m_purchaseProposal;
     std::set<Visit> m_visits;
 public:
@@ -20,6 +19,9 @@ public:
 
     //Setters
     void setPurchaseProposal(bool newValue);
+
+    //Other Methods
+    void displayVisits() const;
 };
 
 #endif // BUYER_H

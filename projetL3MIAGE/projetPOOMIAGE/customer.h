@@ -5,7 +5,7 @@
 
 class Customer
 {
-private:
+protected:
     std::string m_name;
     std::string m_firstName;
     std::string m_address;

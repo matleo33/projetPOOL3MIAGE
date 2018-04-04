@@ -1,7 +1,7 @@
 #ifndef REALESTATE_H
 #define REALESTATE_H
 
-#include "Seller.h"
+#include "seller.h"
 
 class RealEstate
 {
@@ -13,7 +13,7 @@ protected:
     static const int m_identifier;
 public:
     RealEstate() = delete;
-    RealEstate(unsigned int price, std::string address, short surface);
+    RealEstate(unsigned int price, std::string address, unsigned short surface);
 };
 
 #endif // REALESTATE_H
