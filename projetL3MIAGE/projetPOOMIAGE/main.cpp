@@ -25,6 +25,7 @@ int main(int argc, char ** argv)
     Seller seller;
     RealEstate re(200000,"22 beauty street, London", 40, seller);
     UserInterface ui(&agency);
+    std::cout << "Welcome in your new Agency Handling software" << std::endl;
     while (ui.isGood())
     {
         ui.listen();

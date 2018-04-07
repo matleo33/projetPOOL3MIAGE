@@ -5,6 +5,7 @@
 #include "agency.h"
 #include "buyer.h"
 #include "seller.h"
+#include "visit.h"
 
 class UserInterface
 {
@@ -25,8 +26,12 @@ public:
 
     //Other Methods
     void displayMenu() const;
+    void displayCustomers() const;
+    void displayRealEstates() const;
+
     void addCustomer();
     void addRealEstate();
+
     void declareVisit();
 };
 
