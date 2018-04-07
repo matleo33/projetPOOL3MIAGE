@@ -20,9 +20,9 @@ RealEstate Visit::getRealEstate() const
     return m_re;
 }
 
-void Visit::setBuyer(Buyer newBayer)
+void Visit::setBuyer(Buyer newBuyer)
 {
-    m_buyer = newBayer;
+    m_buyer = newBuyer;
 }
 
 void Visit::setSeller(Seller newSeller)
@@ -37,14 +37,13 @@ void Visit::setRealEstate(RealEstate newRealEstate)
 
 void Visit::display() const
 {
-    std::cout << "The visit has been made by " << m_buyer.getName() << std::endl;
     std::cout << "It concerns the real estate of " << m_seller.getName() << std::endl;
     std::cout << "This real estate is located at " << m_re.getAddress() << std::endl;
     std::cout << "It covers a superficy of " << m_re.getSurface() << " square meters " << std::endl;
     std::cout << "It is sold for the price : " << m_re.getPrice() << std::endl;
 }
 
-bool Visit::operator<(const Visit & v)
+bool Visit::operator<(Visit const & v) const
 {
-    return (m_seller.getName() < v.getSeller().getName())
+    return (this->m_seller.getName() < v.getSeller().getName());
 }

@@ -2,8 +2,8 @@
 #define VISIT_H
 
 #include <iostream>
-#include "customer.h"
 #include "buyer.h"
+#include "customer.h"
 #include "seller.h"
 #include "realestate.h"
 
@@ -24,12 +24,12 @@ public:
     RealEstate getRealEstate() const;
 
     //Setters
-    void setBuyer(Buyer newBayer);
+    void setBuyer(Buyer newBuyer);
     void setSeller(Seller newSeller);
     void setRealEstate(RealEstate newRealEstate);
 
     //Operators
-    bool operator<(const Visit & v);
+    bool operator<(Visit const& v) const;
 
     //Other Methods
     void display() const;

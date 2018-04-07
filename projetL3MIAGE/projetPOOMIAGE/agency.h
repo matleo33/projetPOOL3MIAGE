@@ -12,11 +12,21 @@ class Agency
 {
 private:
     std::list<Customer> m_customers;
-    std::map<Customer, RealEstate> m_realEstate;
+    std::map<RealEstate, Customer> m_realEstates;
 public:
+    //Constructors
     Agency() = default;
+
+    //Getters
+    std::list<Customer> getCustomers() const;
+    std::map<RealEstate, Customer> getRealEstates() const;
+
+    //Setters
+
+    //Other Methods
     void addCustomer(Customer &customer);
     void addRealEstate(Customer &customer, RealEstate &RealEstate);
+    void sell(RealEstate re);
 };
 
 #endif // AGENCY_H

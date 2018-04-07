@@ -14,9 +14,19 @@ private:
 public:
     Flat() = delete;
 
+    Flat(unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
+
     //Getters
+    /*
+     * Elea
+     *
+     * */
 
     //Setters
+    /*
+     * Elea
+     *
+     * */
 };
 
 #endif // FLAT_H

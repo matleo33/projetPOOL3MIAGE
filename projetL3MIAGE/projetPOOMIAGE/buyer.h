@@ -3,7 +3,8 @@
 
 #include <set>
 #include "customer.h"
-#include "visit.h"
+
+class Visit;
 
 class Buyer : public Customer
 {
@@ -21,6 +22,7 @@ public:
     void setPurchaseProposal(bool newValue);
 
     //Other Methods
+    void addVisit(Visit v);
     void displayVisits() const;
 };
 
