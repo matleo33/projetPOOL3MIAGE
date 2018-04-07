@@ -25,3 +25,9 @@ void Agency::sell(RealEstate re)
     m_realEstates.erase(m_realEstates.find(re));
     std::cout << "Real estate sold" << std::endl;
 }
+
+void Agency::save()
+{
+    std::cout << "Saved" << std::endl;
+    //Write everything in files
+}

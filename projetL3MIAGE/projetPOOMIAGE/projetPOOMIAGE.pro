@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     realestate.cpp \
     seller.cpp \
     professionallocal.cpp \
-    agency.cpp
+    agency.cpp \
+    userinterface.cpp
 
 HEADERS += \
     customer.h \
@@ -25,4 +26,5 @@ HEADERS += \
     realestate.h \
     seller.h \
     professionallocal.h \
-    agency.h
+    agency.h \
+    userinterface.h

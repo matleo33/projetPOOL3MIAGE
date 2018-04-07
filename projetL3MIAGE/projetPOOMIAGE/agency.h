@@ -27,6 +27,7 @@ public:
     void addCustomer(Customer &customer);
     void addRealEstate(Customer &customer, RealEstate &RealEstate);
     void sell(RealEstate re);
+    void save();
 };
 
 #endif // AGENCY_H
