@@ -39,3 +39,8 @@ void Buyer::displayVisits() const
         std::cout << this->m_firstName << " " << this->m_name << " didn't visit any real estate." << std::endl;
     }
 }
+
+bool Buyer::isSeller() const
+{
+    return false;
+}

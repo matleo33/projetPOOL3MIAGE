@@ -49,9 +49,63 @@ void UserInterface::addCustomer()
     std::cout << "Customer inserted" << std::endl;
 }
 
+bool UserInterface::isNumber(std::string str)
+{
+    for (int i = 0; i < str.length(); ++i)
+    {
+        if (str[i] < '0' || str[i] > '9')
+        {
+            std::cout << "A number value is required." << std::endl;
+            return false;
+        }
+    }
+    return true;
+}
+
+Seller UserInterface::chooseSeller()
+{
+    int i = 1;
+    std::string choice;
+    //Display available sellers
+    for (Seller s : m_agency->getSellers())
+    {
+        std::cout << i << ") " << s.getFirstName() << " " << s.getName() << std::endl;
+        ++i;
+    }
+
+    //Read keyboard
+    do {
+        std::cin >> choice;
+    } while (!isNumber(choice) && std::stoi(choice) > m_agency->getSellers().size());
+
+    return m_agency->getSellers()[std::stoi(choice)-1];
+}
+
 void UserInterface::addRealEstate()
 {
+    //if(seller empty)
+    //Out of the method displaying an error message
+    std::string price;
+    std::string address;
+    std::string surface;
+    Seller seller;
 
+    std::cout << "What is the price of the real estate?" << std::endl;
+    do {
+        std::cin >> price;
+    } while (!isNumber(price));
+
+    std::cout << "What is the address of the real estate?" << std::endl;
+    std::cin >> address;
+
+    std::cout << "What is the surface available of this real estate?" << std::endl;
+    do {
+        std::cin >> surface;
+    }  while (!isNumber(surface));
+
+    seller = chooseSeller();
+    RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
+    m_agency->addRealEstate(seller,re);
 }
 
 void UserInterface::declareVisit()
@@ -61,6 +115,26 @@ void UserInterface::declareVisit()
 
 void UserInterface::displayCustomers() const
 {
+    if (m_agency->getSellers().size()==0)
+    {
+        std::cout << "Sellers : " << std::endl;
+    }
+    for (Seller s : this->m_agency->getSellers())
+    {
+        std::cout << s.getFirstName() << " " << s.getName() << " is living at " << s.getAddress() << std::endl;
+    }
+    if (this->m_agency->getBuyers().size()==0)
+    {
+        std::cout << "Buyers : " << std::endl;
+    }
+    for (Buyer b : this->m_agency->getBuyers())
+    {
+        std::cout << b.getFirstName() << " " << b.getName() << " is living at " << b.getAddress() << std::endl;
+    }
+    if (!m_agency->getCustomers().size()==0)
+    {
+        std::cout << "Other Customers : " << std::endl;
+    }
     for (Customer c : this->m_agency->getCustomers())
     {
         std::cout << c.getFirstName() << " " << c.getName() << " is living at " << c.getAddress() << std::endl;

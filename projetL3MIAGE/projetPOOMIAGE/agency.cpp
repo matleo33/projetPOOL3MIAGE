@@ -1,11 +1,11 @@
 #include "agency.h"
 
-std::list<Customer> Agency::getCustomers() const
+std::vector<Customer> Agency::getCustomers() const
 {
     return m_customers;
 }
 
-std::map<RealEstate, Customer> Agency::getRealEstates() const
+std::map<RealEstate, Seller> Agency::getRealEstates() const
 {
     return m_realEstates;
 }
@@ -15,9 +15,9 @@ void Agency::addCustomer(Customer &customer)
     m_customers.push_back(customer);
 }
 
-void Agency::addRealEstate(Customer &customer, RealEstate &RealEstate)
+void Agency::addRealEstate(Seller &seller, RealEstate &RealEstate)
 {
-    m_realEstates.insert(std::make_pair(RealEstate, customer));
+    m_realEstates.insert(std::make_pair(RealEstate, seller));
 }
 
 void Agency::sell(RealEstate re)
@@ -30,4 +30,25 @@ void Agency::save()
 {
     std::cout << "Saved" << std::endl;
     //Write everything in files
+
+}
+
+std::vector<Seller> Agency::getSellers() const
+{
+    return m_sellers;
+}
+
+std::vector<Buyer> Agency::getBuyers() const
+{
+    return m_buyers;
+}
+
+void Agency::addBuyer(Buyer &b)
+{
+    m_buyers.push_back(b);
+}
+
+void Agency::addSeller(Seller &s)
+{
+    m_sellers.push_back(s);
 }

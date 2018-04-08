@@ -2,30 +2,38 @@
 #define AGENCY_H
 
 #include <iostream>
+#include <vector>
 #include <list>
 #include <map>
 
 #include "customer.h"
 #include "realestate.h"
+#include "buyer.h"
+#include "visit.h"
 
 class Agency
 {
 private:
-    std::list<Customer> m_customers;
-    std::map<RealEstate, Customer> m_realEstates;
+    std::vector<Customer> m_customers;
+    std::vector<Seller> m_sellers;
+    std::vector<Buyer> m_buyers;
+    std::map<RealEstate, Seller> m_realEstates;
 public:
     //Constructors
     Agency() = default;
 
     //Getters
-    std::list<Customer> getCustomers() const;
-    std::map<RealEstate, Customer> getRealEstates() const;
-
+    std::vector<Customer> getCustomers() const;
+    std::map<RealEstate, Seller> getRealEstates() const;
+    std::vector<Seller> getSellers() const;
+    std::vector<Buyer> getBuyers() const;
     //Setters
 
     //Other Methods
     void addCustomer(Customer &customer);
-    void addRealEstate(Customer &customer, RealEstate &RealEstate);
+    void addRealEstate(Seller &seller, RealEstate &RealEstate);
+    void addBuyer(Buyer &b);
+    void addSeller(Seller &s);
     void sell(RealEstate re);
     void save();
 };

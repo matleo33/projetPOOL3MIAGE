@@ -38,3 +38,8 @@ void Customer::setAddress(std::string newAddress)
 {
     this->m_address = newAddress;
 }
+
+bool Customer::isSeller() const
+{
+    return false;
+}

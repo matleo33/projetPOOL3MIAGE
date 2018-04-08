@@ -33,6 +33,10 @@ public:
     void addRealEstate();
 
     void declareVisit();
+
+    bool isNumber(std::string str);
+
+    Seller chooseSeller();
 };
 
 #endif // USERINTERFACE_H

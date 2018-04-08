@@ -7,6 +7,7 @@ class Seller : public Customer
 {
 public:
     Seller();
+    virtual bool isSeller() const;
 };
 
 #endif // SELLER_H
