@@ -5,6 +5,8 @@
 
 class Plot
 {
+private:
+    //CONSTRUCTIBLE OU PAS?
 public:
     Plot();
     virtual std::string getType() const;
