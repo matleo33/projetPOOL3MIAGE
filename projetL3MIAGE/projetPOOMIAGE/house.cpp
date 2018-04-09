@@ -33,3 +33,8 @@ void House::setGarage(bool has)
 {
     m_garage = has;
 }
+
+std::string House::getType() const
+{
+    return "house";
+}

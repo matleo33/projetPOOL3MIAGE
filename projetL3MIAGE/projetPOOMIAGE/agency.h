@@ -35,6 +35,7 @@ public:
     void addRealEstate(Seller &seller, RealEstate &RealEstate);
     void addBuyer(Buyer &b);
     void addSeller(Seller &s);
+    void removeBuyer();
     void removeSeller();
     void removeRealEstate(RealEstate re);
     void sell(RealEstate re);

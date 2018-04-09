@@ -26,9 +26,6 @@ public:
     void setName(std::string newName);
     void setFirstName(std::string newFirstName);
     void setAddress(std::string newAddress);
-
-    //Other Methods
-    virtual bool isSeller() const;
 };
 
 #endif // CUSTOMER_H

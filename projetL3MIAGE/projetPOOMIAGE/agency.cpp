@@ -148,6 +148,25 @@ bool Agency::isNumber(std::string str)
     return true;
 }
 
+void Agency::removeBuyer()
+{
+    int i = 1;
+    std::string choice;
+    for (Buyer b : m_buyers)
+    {
+        std::cout << i << ") " << b.getFirstName() << " " << b.getName() << std::endl;
+        ++i;
+    }
+
+    do {
+        std::cin >> choice;
+    } while (!isNumber(choice) && std::stoi(choice) > m_buyers.size());
+    //Remove all their visits
+    m_buyers[std::stoi(choice) - 1].getVisits().clear();
+    //Remove the seller
+    m_buyers.erase(m_buyers.begin()+std::stoi(choice) - 1);
+}
+
 void Agency::removeSeller()
 {
     int i = 1;

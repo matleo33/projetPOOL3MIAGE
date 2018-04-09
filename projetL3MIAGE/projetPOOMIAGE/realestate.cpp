@@ -43,6 +43,11 @@ int RealEstate::getIdentifier() const
     return m_identifier;
 }
 
+std::string RealEstate::getType() const
+{
+    return "real estate";
+}
+
 bool RealEstate::operator<(const RealEstate & re) const
 {
     return (this->getIdentifier() < re.getIdentifier());

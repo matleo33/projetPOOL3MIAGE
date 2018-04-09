@@ -1,6 +1,7 @@
 #ifndef HOUSE_H
 #define HOUSE_H
 
+#include <iostream>
 
 class House
 {
@@ -17,6 +18,7 @@ public:
     unsigned short getNbRooms() const;
     bool hasSwimmingPool() const;
     bool hasGarage() const;
+    virtual std::string getType() const;
 
     //Setters
     void setNbRooms(unsigned short nbRooms);

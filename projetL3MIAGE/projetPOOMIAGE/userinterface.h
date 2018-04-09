@@ -7,6 +7,10 @@
 #include "buyer.h"
 #include "seller.h"
 #include "visit.h"
+#include "flat.h"
+#include "house.h"
+#include "plot.h"
+#include "professionallocal.h"
 
 class UserInterface
 {
@@ -33,6 +37,7 @@ public:
     void addCustomer();
     void addRealEstate();
 
+    void removeBuyer();
     void removeSeller();
     void removeRealEstate();
 

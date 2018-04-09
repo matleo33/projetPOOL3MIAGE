@@ -1,6 +1,7 @@
 #ifndef FLAT_H
 #define FLAT_H
 
+#include <iostream>
 
 class Flat
 {
@@ -15,7 +16,7 @@ public:
     Flat() = delete;
 
     Flat(unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
-
+    virtual std::string getType() const;
     //Getters
     /*
      * Elea

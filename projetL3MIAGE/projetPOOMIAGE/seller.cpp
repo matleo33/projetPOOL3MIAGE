@@ -5,7 +5,7 @@ Seller::Seller()
 
 }
 
-bool Seller::isSeller() const
+std::string Seller::getType() const
 {
-    return true;
+    return "real estate";
 }
