@@ -218,6 +218,7 @@ void UserInterface::removeSeller()
     }
     else {
         m_agency->removeSeller();
+        m_agency->save();
     }
 }
 
@@ -228,6 +229,7 @@ void UserInterface::removeRealEstate()
         std::cout << "There is no real estate" << std::endl;
     } else {
         m_agency->removeRealEstate(chooseRealEstate(chooseSeller()));
+        m_agency->save();
     }
 }
 
@@ -272,10 +274,12 @@ void UserInterface::listen()
         else if (m_request == "1")
         {
             addCustomer();
+            system("clear");
         }
         else if (m_request == "2")
         {
             addRealEstate();
+            system("clear");
         }
         else if (m_request == "3")
         {
@@ -292,13 +296,16 @@ void UserInterface::listen()
         else if (m_request == "6")
         {
             removeSeller();
+            system("clear");
         }
         else if (m_request == "7")
         {
             removeRealEstate();
+            system("clear");
         }
         else if (m_request == "8")
         {
+            system("clear");
             std::cout << "Another stuff has been done." << std::endl;
         } else {
             std::cout << "Sorry, but your request was not recognized, please enter another one." << std::endl;

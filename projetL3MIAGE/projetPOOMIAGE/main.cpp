@@ -31,6 +31,7 @@ int main(int argc, char ** argv)
     {
         ui.listen();
     }
+    agency.save();
     std::cout << "Thank you for using our software, see you !" << std::endl;
     /*agency.addCustomer(seller);
     agency.addCustomer(buyer);
