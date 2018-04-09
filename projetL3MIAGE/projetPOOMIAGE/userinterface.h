@@ -33,6 +33,9 @@ public:
     void addCustomer();
     void addRealEstate();
 
+    void removeSeller();
+    void removeRealEstate();
+
     void declareVisit();
 
     bool isNumber(std::string str);

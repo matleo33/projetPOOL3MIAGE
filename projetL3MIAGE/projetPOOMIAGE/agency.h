@@ -35,10 +35,14 @@ public:
     void addRealEstate(Seller &seller, RealEstate &RealEstate);
     void addBuyer(Buyer &b);
     void addSeller(Seller &s);
+    void removeSeller();
+    void removeRealEstate(RealEstate re);
     void sell(RealEstate re);
     void save();
     void open();
     std::vector<std::string> split(std::string stringToSplit, char separator);
+
+    bool isNumber(std::string str);
 };
 
 #endif // AGENCY_H

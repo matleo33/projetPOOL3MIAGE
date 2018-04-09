@@ -91,7 +91,7 @@ void Agency::open()
 
 }
 
-std::vector<Seller> Agency::getSellers() const
+std::vector<Seller> Agency::getSellers()const
 {
     return m_sellers;
 }
@@ -126,4 +126,41 @@ std::vector<std::string> Agency::split(std::string stringToSplit, char separator
     stringSplit.push_back(stringToSplit);
 
     return stringSplit;
+}
+bool Agency::isNumber(std::string str)
+{
+    if (str.length()==0)
+    {
+        return false;
+    }
+    for (int i = 0; i < str.length(); ++i)
+    {
+        if (str[i] < '0' || str[i] > '9')
+        {
+            std::cout << "A number value is required." << std::endl;
+            return false;
+        }
+    }
+    return true;
+}
+
+void Agency::removeSeller()
+{
+    int i = 1;
+    std::string choice;
+    for (Seller s : m_sellers)
+    {
+        std::cout << i << ") " << s.getFirstName() << " " << s.getName() << std::endl;
+        ++i;
+    }
+
+    do {
+        std::cin >> choice;
+    } while (!isNumber(choice) && std::stoi(choice) > m_sellers.size());
+    m_sellers.erase(m_sellers.begin()+std::stoi(choice) - 1);
+}
+
+void Agency::removeRealEstate(RealEstate re)
+{
+    m_realEstates.erase(m_realEstates.find(re));
 }

@@ -22,10 +22,8 @@ void UserInterface::addCustomer()
     std::cin.ignore();
     std::getline(std::cin, name);
     std::cout << "What is the first name of the new customer?" << std::endl;
-    std::cin.ignore();
     std::getline(std::cin, firstName);
     std::cout << "What is the address of the new customer?" << std::endl;
-    std::cin.ignore();
     std::getline(std::cin, address);
 
     std::cout << "Does the new customer want to buy a real estate (press 1 and valid) or to sell one (press 2 and valid)?" << std::endl;
@@ -54,6 +52,10 @@ void UserInterface::addCustomer()
 
 bool UserInterface::isNumber(std::string str)
 {
+    if (str.length()==0)
+    {
+        return false;
+    }
     for (int i = 0; i < str.length(); ++i)
     {
         if (str[i] < '0' || str[i] > '9')
@@ -127,77 +129,119 @@ Seller UserInterface::chooseSeller()
 
 void UserInterface::addRealEstate()
 {
-    //if(seller empty)
-    //Out of the method displaying an error message
-    std::string price;
-    std::string address;
-    std::string surface;
-    Seller seller;
+    if (m_agency->getSellers().size() == 0)
+    {
+        std::cout << "There is not any seller, you can not add a real estate." << std::endl;
+    } else {
 
-    std::cout << "What is the price of the real estate?" << std::endl;
-    do {
-        std::getline(std::cin, price);
-    } while (!isNumber(price));
+        //Out of the method displaying an error message
+        std::string price;
+        std::string address;
+        std::string surface;
+        Seller seller;
 
-    std::cout << "What is the address of the real estate?" << std::endl;
-    std::cin.ignore();
-    std::getline(std::cin, address);
+        std::cout << "What is the price of the real estate?" << std::endl;
+        do {
+            std::getline(std::cin, price);
+        } while (!isNumber(price));
 
-    std::cout << "What is the surface available of this real estate?" << std::endl;
-    do {
-        std::cin >> surface;
-    }  while (!isNumber(surface));
+        std::cout << "What is the address of the real estate?" << std::endl;
+        std::getline(std::cin, address);
 
-    seller = chooseSeller();
-    RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
-    m_agency->addRealEstate(seller,re);
+        std::cout << "What is the surface available of this real estate?" << std::endl;
+        do {
+            std::cin >> surface;
+        }  while (!isNumber(surface));
+
+        seller = chooseSeller();
+        RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
+        m_agency->addRealEstate(seller,re);
+    }
 }
 
 void UserInterface::declareVisit()
 {
-    Buyer b;
-    Seller s;
-    RealEstate re;
-    b = chooseBuyer();
-    s = chooseSeller();
-    re = chooseRealEstate(s);
-    Visit v(b,s,re);
+    if (m_agency->getBuyers().size() == 0)
+    {
+        std::cout << "There is no buyer, you can not declare a visit." << std::endl;
+    } else if (m_agency->getSellers().size()==0)
+    {
+        std::cout << "There is no seller, you can not declare a visit." << std::endl;
+    } else if (m_agency->getRealEstates().size() == 0)
+    {
+        std::cout << "There is no real estate, you can not declare a visit." << std::endl;
+    } else {
+        Buyer b;
+        Seller s;
+        RealEstate re;
+        b = chooseBuyer();
+        s = chooseSeller();
+        re = chooseRealEstate(s);
+        Visit v(b,s,re);
+        b.addVisit(v);
+    }
 }
 
 void UserInterface::displayCustomers() const
 {
-    if (m_agency->getSellers().size()==0)
+    if (m_agency->getSellers().size()!=0)
     {
         std::cout << "Sellers : " << std::endl;
+        for (Seller s : this->m_agency->getSellers())
+        {
+            std::cout << s.getFirstName() << " " << s.getName() << " is living at " << s.getAddress() << std::endl;
+        }
     }
-    for (Seller s : this->m_agency->getSellers())
-    {
-        std::cout << s.getFirstName() << " " << s.getName() << " is living at " << s.getAddress() << std::endl;
-    }
-    if (this->m_agency->getBuyers().size()==0)
+    if (m_agency->getBuyers().size()!=0)
     {
         std::cout << "Buyers : " << std::endl;
+        for (Buyer b : this->m_agency->getBuyers())
+        {
+            std::cout << b.getFirstName() << " " << b.getName() << " is living at " << b.getAddress() << std::endl;
+        }
     }
-    for (Buyer b : this->m_agency->getBuyers())
-    {
-        std::cout << b.getFirstName() << " " << b.getName() << " is living at " << b.getAddress() << std::endl;
-    }
-    if (!m_agency->getCustomers().size()==0)
+    if (m_agency->getCustomers().size()!=0)
     {
         std::cout << "Other Customers : " << std::endl;
+        for (Customer c : this->m_agency->getCustomers())
+        {
+            std::cout << c.getFirstName() << " " << c.getName() << " is living at " << c.getAddress() << std::endl;
+        }
     }
-    for (Customer c : this->m_agency->getCustomers())
+}
+
+void UserInterface::removeSeller()
+{
+    if (m_agency->getSellers().size()==0)
     {
-        std::cout << c.getFirstName() << " " << c.getName() << " is living at " << c.getAddress() << std::endl;
+        std::cout << "There is no seller." << std::endl;
+    }
+    else {
+        m_agency->removeSeller();
+    }
+}
+
+void UserInterface::removeRealEstate()
+{
+    if (m_agency->getRealEstates().size()==0)
+    {
+        std::cout << "There is no real estate" << std::endl;
+    } else {
+        m_agency->removeRealEstate(chooseRealEstate(chooseSeller()));
     }
 }
 
 void UserInterface::displayRealEstates() const
 {
-    for (std::pair<RealEstate,Customer> re :this->m_agency->getRealEstates())
+    if (this->m_agency->getRealEstates().size() == 0)
     {
-        std::cout << "Real estate n°" << re.first.getIdentifier() << " is available for $" << re.first.getPrice() << " and is sold by " << re.first.getSeller().getFirstName();
-        std::cout << " " << re.first.getSeller().getName() << std::endl;
+        std::cout << "There is not any real estate" << std::endl;
+    } else {
+        for (std::pair<RealEstate,Customer> re : this->m_agency->getRealEstates())
+        {
+            std::cout << "Real estate n°" << re.first.getIdentifier() << " is available for $" << re.first.getPrice() << " and is sold by " << re.first.getSeller().getFirstName();
+            std::cout << " " << re.first.getSeller().getName() << std::endl;
+        }
     }
 }
 
@@ -210,7 +254,9 @@ void UserInterface::displayMenu() const
     std::cout << "3) Declare a visit" << std::endl;
     std::cout << "4) Display all customers" << std::endl;
     std::cout << "5) Display all real restates" << std::endl;
-    std::cout << "6) Another stuff" << std::endl;
+    std::cout << "6) Remove a seller" << std::endl;
+    std::cout << "7) Remove a real estate" << std::endl;
+    std::cout << "8) Another stuff" << std::endl;
 }
 
 void UserInterface::listen()
@@ -244,6 +290,14 @@ void UserInterface::listen()
             displayRealEstates();
         }
         else if (m_request == "6")
+        {
+            removeSeller();
+        }
+        else if (m_request == "7")
+        {
+            removeRealEstate();
+        }
+        else if (m_request == "8")
         {
             std::cout << "Another stuff has been done." << std::endl;
         } else {
