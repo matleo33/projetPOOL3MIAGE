@@ -308,6 +308,14 @@ void UserInterface::displayRealEstates() const
     }
 }
 
+void UserInterface::searchRealEstate()
+{
+    //Ask budget max
+    //Ask type of real estate (or various)
+    //Ask superficy min max
+    //Ask typical stuff in connection with the type chosen (Example : A balcony for a Flat)
+}
+
 void UserInterface::displayMenu() const
 {
     std::cout << "Press q and valid to quit the application" << std::endl;
@@ -320,7 +328,8 @@ void UserInterface::displayMenu() const
     std::cout << "6) Remove a seller" << std::endl;
     std::cout << "7) Remove a buyer" << std::endl;
     std::cout << "8) Remove a real estate" << std::endl;
-    std::cout << "9) Another stuff" << std::endl;
+    std::cout << "9) Search the real estate of your dreams" << std::endl;
+    std::cout << "10) Another stuff" << std::endl;
 }
 
 void UserInterface::listen()
@@ -373,6 +382,12 @@ void UserInterface::listen()
             system("clear");
         }
         else if (m_request == "9")
+        {
+            system("clear");
+            searchRealEstate();
+            system("clear");
+        }
+        else if (m_request == "10")
         {
             system("clear");
             std::cout << "Another stuff has been done." << std::endl;
