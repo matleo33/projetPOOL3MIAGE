@@ -161,6 +161,15 @@ void Agency::removeSeller()
     do {
         std::cin >> choice;
     } while (!isNumber(choice) && std::stoi(choice) > m_sellers.size());
+    //Remove all their real estates
+    for (std::pair<RealEstate, Seller> pre : m_realEstates)
+    {
+        if (pre.second.getId() == m_sellers[std::stoi(choice) - 1].getId())
+        {
+            m_realEstates.erase(pre.first);
+        }
+    }
+    //Remove the seller
     m_sellers.erase(m_sellers.begin()+std::stoi(choice) - 1);
 }
 

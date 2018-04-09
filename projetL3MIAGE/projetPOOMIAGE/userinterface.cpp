@@ -184,6 +184,11 @@ void UserInterface::declareVisit()
 
 void UserInterface::displayCustomers() const
 {
+    if (m_agency->getBuyers().size() + m_agency->getCustomers().size() +
+            m_agency->getSellers().size()==0)
+    {
+        std::cout << "There is not any customer" << std::endl;
+    }
     if (m_agency->getSellers().size()!=0)
     {
         std::cout << "Sellers : " << std::endl;
@@ -227,6 +232,7 @@ void UserInterface::removeRealEstate()
     {
         std::cout << "There is no real estate" << std::endl;
     } else {
+        std::cout << "Choose your seller : " << std::endl;
         m_agency->removeRealEstate(chooseRealEstate(chooseSeller()));
     }
 }
