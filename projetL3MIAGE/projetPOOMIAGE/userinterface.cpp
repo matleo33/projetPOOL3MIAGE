@@ -65,6 +65,47 @@ bool UserInterface::isNumber(std::string str)
     return true;
 }
 
+Buyer UserInterface::chooseBuyer()
+{
+    int i = 1;
+    std::string choice;
+    //Display available buyers
+    for (Buyer b : m_agency->getBuyers())
+    {
+        std::cout << i << ") " << b.getFirstName() << " " << b.getName() << std::endl;
+        ++i;
+    }
+
+    //Read keyboard
+    do {
+        std::cin >> choice;
+    } while (!isNumber(choice) && std::stoi(choice) > m_agency->getBuyers().size());
+
+    return m_agency->getBuyers()[std::stoi(choice)-1];
+}
+
+RealEstate UserInterface::chooseRealEstate(Seller s)
+{
+    //display all the real estates of the Seller
+    int i = 1;
+    std::string choice;
+    std::vector <RealEstate> vre;
+    for (std::pair<RealEstate, Seller> re : m_agency->getRealEstates())
+    {
+        if (re.second.getId() == s.getId())
+        {
+            std::cout << i << ") " << re.first.getAddress() << " : " << re.first.getPrice() << " ; " << re.first.getSurface() << std::endl;
+            vre.push_back(re.first);
+        }
+    }
+    //Make the user choose
+    do {
+        std::cin >> choice;
+    } while (!isNumber(choice) && std::stoi(choice) > m_agency->getRealEstates().size());
+
+    return vre[std::stoi(choice)-1];
+}
+
 Seller UserInterface::chooseSeller()
 {
     int i = 1;
@@ -114,7 +155,13 @@ void UserInterface::addRealEstate()
 
 void UserInterface::declareVisit()
 {
-
+    Buyer b;
+    Seller s;
+    RealEstate re;
+    b = chooseBuyer();
+    s = chooseSeller();
+    re = chooseRealEstate(s);
+    Visit v(b,s,re);
 }
 
 void UserInterface::displayCustomers() const
