@@ -36,12 +36,13 @@ public:
 
     void addCustomer();
     void addRealEstate();
+    void declareVisit();
 
     void removeBuyer();
     void removeSeller();
     void removeRealEstate();
 
-    void declareVisit();
+    void searchRealEstate();
 
     bool isNumber(std::string str);
 
