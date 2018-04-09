@@ -68,7 +68,11 @@ void Agency::open()
         std::string content;
         while(std::getline(file_sellers, content)) {
             std::vector<std::string> seller_infos = split(content,':');
-            std::cout << seller_infos[0] << std::endl;
+            Seller s;
+            s.setName(seller_infos[0]);
+            s.setFirstName(seller_infos[1]);
+            s.setAddress(seller_infos[2]);
+            m_sellers.push_back(s);
         }
     } else {
         std::cerr << "Can not open sellers.txt" << std::endl;
