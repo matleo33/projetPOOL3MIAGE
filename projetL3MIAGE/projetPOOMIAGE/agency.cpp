@@ -50,10 +50,10 @@ void Agency::save()
         std::cerr << "Can not open buyers.txt" << std::endl;
     }
 
-    //Not working atm (problem with creating estates in the program)
     std::ofstream file_realEstates("../save/realEstates.txt", std::ios::out | std::ios::trunc);
     if(file_realEstates) {
         for (std::pair<RealEstate,Customer> it : m_realEstates) {
+            std::cout << it.first.getIdentifier() << ":" << it.first.getSeller().getId() << std::endl;
             file_realEstates << it.first.getIdentifier() << ":" << it.first.getSeller().getId() << "\n" << std::endl;
         }
         file_realEstates.close();

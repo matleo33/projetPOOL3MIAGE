@@ -349,10 +349,12 @@ void UserInterface::listen()
         }
         else if (m_request == "4")
         {
+            system("clear");
             displayCustomers();
         }
         else if (m_request == "5")
         {
+            system("clear");
             displayRealEstates();
         }
         else if (m_request == "6")
