@@ -2,6 +2,7 @@
 #define USERINTERFACE_H
 
 #include <iostream>
+#include <string>
 #include "agency.h"
 #include "buyer.h"
 #include "seller.h"

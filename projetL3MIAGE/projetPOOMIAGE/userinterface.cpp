@@ -19,11 +19,14 @@ void UserInterface::addCustomer()
     std::string type;
 
     std::cout << "What is the name of the new customer?" << std::endl;
-    std::cin >> name;
+    std::cin.ignore();
+    std::getline(std::cin, name);
     std::cout << "What is the first name of the new customer?" << std::endl;
-    std::cin >> firstName;
+    std::cin.ignore();
+    std::getline(std::cin, firstName);
     std::cout << "What is the address of the new customer?" << std::endl;
-    std::cin >> address;
+    std::cin.ignore();
+    std::getline(std::cin, address);
 
     std::cout << "Does the new customer want to buy a real estate (press 1 and valid) or to sell one (press 2 and valid)?" << std::endl;
     do {
@@ -92,11 +95,12 @@ void UserInterface::addRealEstate()
 
     std::cout << "What is the price of the real estate?" << std::endl;
     do {
-        std::cin >> price;
+        std::getline(std::cin, price);
     } while (!isNumber(price));
 
     std::cout << "What is the address of the real estate?" << std::endl;
-    std::cin >> address;
+    std::cin.ignore();
+    std::getline(std::cin, address);
 
     std::cout << "What is the surface available of this real estate?" << std::endl;
     do {
