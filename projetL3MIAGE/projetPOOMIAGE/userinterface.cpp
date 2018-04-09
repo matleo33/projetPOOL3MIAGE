@@ -198,6 +198,7 @@ void UserInterface::addRealEstate()
 
         RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
         m_agency->addRealEstate(seller,re);
+        m_agency->save();
     }
 }
 
