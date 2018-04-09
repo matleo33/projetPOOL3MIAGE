@@ -38,6 +38,7 @@ public:
     void sell(RealEstate re);
     void save();
     void open();
+    std::vector<std::string> split(std::string stringToSplit, char separator);
 };
 
 #endif // AGENCY_H

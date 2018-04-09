@@ -23,6 +23,7 @@ int main(int argc, char ** argv)
     Agency agency;
     Buyer buyer;
     Seller seller;
+    agency.open();
     RealEstate re(200000,"22 beauty street, London", 40, seller);
     UserInterface ui(&agency);
     std::cout << "Welcome in your new Agency Handling software" << std::endl;
