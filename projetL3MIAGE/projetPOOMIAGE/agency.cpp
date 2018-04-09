@@ -28,8 +28,45 @@ void Agency::sell(RealEstate re)
 
 void Agency::save()
 {
+    std::ofstream file_sellers("../save/sellers.txt", std::ios::out | std::ios::trunc);
+    if(file_sellers) {
+        for(Seller it : m_sellers) {
+            file_sellers << it.getFirstName() << " : " << it.getName() << " : "
+                    << it.getAddress() << ";";
+        }
+    } else {
+        std::cerr << "Can not open sellers.txt" << std::endl;
+    }
+
+    std::ofstream file_buyers("../save/buyers.txt", std::ios::out | std::ios::trunc);
+    if(file_buyers) {
+        for(Buyer it : m_buyers) {
+            file_buyers << it.getFirstName() << " : " << it.getName() << " : "
+                    << it.getAddress() << ";";
+        }
+    } else {
+        std::cerr << "Can not open buyers.txt" << std::endl;
+    }
+
+    std::ofstream file_realEstates("../save/realEstates.txt", std::ios::out | std::ios::trunc);
+    if(file_realEstates) {
+        for (std::pair<RealEstate,Customer> it : m_realEstates) {
+            file_realEstates << it.first.getIdentifier() << " : " << it.first.getSeller().getId() << std::endl;
+        }
+    }
+
+
     std::cout << "Saved" << std::endl;
     //Write everything in files
+
+}
+
+void Agency::open()
+{
+
+
+    std::cout << "Read" << std::endl;
+    //Read everything from files
 
 }
 

@@ -39,14 +39,14 @@ void UserInterface::addCustomer()
         b.setAddress(address);
         b.setFirstName(firstName);
         b.setName(name);
-        m_agency->addCustomer(b);
+        m_agency->addBuyer(b);
         m_agency->save();
     } else {
         Seller s;
         s.setAddress(address);
         s.setFirstName(firstName);
         s.setName(name);
-        m_agency->addCustomer(s);
+        m_agency->addSeller(s);
         m_agency->save();
     }
     std::cout << "Customer inserted" << std::endl;

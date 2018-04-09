@@ -6,6 +6,8 @@
 class Customer
 {
 protected:
+    static int m_id;
+    int m_identifier;
     std::string m_name;
     std::string m_firstName;
     std::string m_address;
@@ -18,6 +20,7 @@ public:
     std::string getName() const;
     std::string getFirstName() const;
     std::string getAddress() const;
+    int getId() const;
 
     //Setters
     void setName(std::string newName);

@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <fstream>
 
 #include "customer.h"
 #include "realestate.h"
@@ -36,6 +37,7 @@ public:
     void addSeller(Seller &s);
     void sell(RealEstate re);
     void save();
+    void open();
 };
 
 #endif // AGENCY_H
