@@ -14,7 +14,7 @@ protected:
     int m_identifier;
 public:
     //Constructors
-    RealEstate();
+    RealEstate() = default;
     RealEstate(const RealEstate & re);
     RealEstate(unsigned int price, std::string address, unsigned short surface, Seller seller);
 

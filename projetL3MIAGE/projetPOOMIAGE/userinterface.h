@@ -38,6 +38,8 @@ public:
     bool isNumber(std::string str);
 
     Seller chooseSeller();
+    Buyer chooseBuyer();
+    RealEstate chooseRealEstate(Seller s);
 };
 
 #endif // USERINTERFACE_H
