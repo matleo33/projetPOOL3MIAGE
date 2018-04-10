@@ -22,7 +22,7 @@ int main(int argc, char ** argv)
     Agency agency;
     agency.open();
     UserInterface ui(&agency);
-    std::cout << "Welcome in your new Agency Handling software" << std::endl;
+    std::cout << "Welcome to your new Agency Handling software" << std::endl;
     while (ui.isGood())
     {
         ui.listen();

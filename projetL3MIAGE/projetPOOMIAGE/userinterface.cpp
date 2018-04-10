@@ -26,7 +26,7 @@ void UserInterface::addCustomer()
     std::cout << "What is the address of the new customer?" << std::endl;
     std::getline(std::cin, address);
 
-    std::cout << "Does the new customer want to buy a real estate (press 1 and valid) or to sell one (press 2 and valid)?" << std::endl;
+    std::cout << "Does the new customer want to buy a real estate (press 1 and validate) or to sell one (press 2 and validate)?" << std::endl;
     do {
         std::cin >> type;
     } while (type != "1" && type != "2");
@@ -132,7 +132,7 @@ void UserInterface::addRealEstate()
     //Out of the method displaying an error message
     if (m_agency->getSellers().size() == 0)
     {
-        std::cout << "There is not any seller, you can not add a real estate." << std::endl;
+        std::cout << "There is not any sellers, you can not add a real estate." << std::endl;
     } else {
         std::string type;
         std::string price;
@@ -230,7 +230,7 @@ void UserInterface::displayCustomers() const
     if (m_agency->getBuyers().size() + m_agency->getCustomers().size() +
             m_agency->getSellers().size()==0)
     {
-        std::cout << "There is not any customer" << std::endl;
+        std::cout << "There is not any customers" << std::endl;
     }
     if (m_agency->getSellers().size()!=0)
     {
@@ -298,7 +298,7 @@ void UserInterface::displayRealEstates() const
 {
     if (this->m_agency->getRealEstates().size() == 0)
     {
-        std::cout << "There is not any real estate" << std::endl;
+        std::cout << "There is not any real estates" << std::endl;
     } else {
         for (std::pair<RealEstate,Customer> re : this->m_agency->getRealEstates())
         {
@@ -311,15 +311,15 @@ void UserInterface::displayRealEstates() const
 
 void UserInterface::searchRealEstate()
 {
-    //Ask budget max
-    //Ask type of real estate (or various)
-    //Ask superficy min max
-    //Ask typical stuff in connection with the type chosen (Example : A balcony for a Flat)
+    //Ask for budget max
+    //Ask for type of real estate (or various)
+    //Ask for superficy min max
+    //Ask for typical stuff related to the type chosen (Example : A balcony for a Flat)
 }
 
 void UserInterface::displayMenu() const
 {
-    std::cout << "Press q and valid to quit the application" << std::endl;
+    std::cout << "Press q and validate to quit the application" << std::endl;
     std::cout << "Menu : " << std::endl;
     std::cout << "1) Add a customer" << std::endl;
     std::cout << "2) Add a real estate" << std::endl;
@@ -329,8 +329,8 @@ void UserInterface::displayMenu() const
     std::cout << "6) Remove a seller" << std::endl;
     std::cout << "7) Remove a buyer" << std::endl;
     std::cout << "8) Remove a real estate" << std::endl;
-    std::cout << "9) Search the real estate of your dreams" << std::endl;
-    std::cout << "10) Another stuff" << std::endl;
+    std::cout << "9) Search for the real estate of your dreams" << std::endl;
+    std::cout << "10) Other stuff" << std::endl;
 }
 
 void UserInterface::listen()
@@ -391,7 +391,7 @@ void UserInterface::listen()
         else if (m_request == "10")
         {
             system("clear");
-            std::cout << "Another stuff has been done." << std::endl;
+            std::cout << "Other stuff has been done." << std::endl;
         } else {
             std::cout << "Sorry, but your request was not recognized, please enter another one." << std::endl;
         }
