@@ -309,12 +309,70 @@ void UserInterface::displayRealEstates() const
     }
 }
 
+std::vector<RealEstate> UserInterface::researchRealEstateSuperficy(int superficyMin, int superficyMax)
+{
+    std::vector<RealEstate> result;
+    std::map<RealEstate,Seller>::iterator it;
+    for(it = m_agency->getRealEstates().begin(); it != m_agency->getRealEstates().end(); it++)
+    {
+        if(it->first.getSurface() <= superficyMax && it->first.getSurface() >= superficyMin)
+        {
+            std::cout << it->first.getSurface() << std::endl;
+            result.push_back(it->first);
+        }
+    }
+    return result;
+}
+
 void UserInterface::searchRealEstate()
 {
+
     //Ask for budget max
     //Ask for type of real estate (or various)
     //Ask for superficy min max
     //Ask for typical stuff related to the type chosen (Example : A balcony for a Flat)
+
+    int budget;
+    int superficyMin;
+    int superficyMax;
+    char realEstateType;
+    std::cout << "Press b and valid for back to the menu !" << std::endl;
+    std::cout<< "1) What is your max budget" << std::endl;
+    std::cout<< "2) What type of real estate you are looking for ?" << std::endl;
+    std::cout<< "3) With superficy ?" << std::endl;
+    std::cout<< "4) NTM ON FAIT CA PLUS TARD" << std::endl;
+
+    std::cin >> m_research;
+
+    if (m_research == "b" || m_research == "back")
+    {
+        listen();
+    }
+    else if(m_research == "1")
+    {
+
+    }
+    else if(m_research == "2")
+    {
+
+    }
+    else if(m_research == "3")
+    {
+        std::cout<< "Min superficy" << std::endl;
+        std::cin >> superficyMin;
+        std::cout<< "Max superficy" << std::endl;
+        std::cin >> superficyMax;
+        researchRealEstateSuperficy(superficyMin, superficyMax);
+    }
+    else if(m_research == "4")
+    {
+
+    }
+    else
+    {
+        std::cout << "Sorry, but your request was not recognized, please enter another one." << std::endl;
+    }
+
 }
 
 void UserInterface::displayMenu() const

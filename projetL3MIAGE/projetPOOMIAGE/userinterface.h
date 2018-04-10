@@ -17,6 +17,7 @@ class UserInterface
 private:
     bool m_quit;
     std::string m_request;
+    std::string m_research;
     Agency *m_agency;
 public:
     UserInterface() = delete;
@@ -43,6 +44,7 @@ public:
     void removeRealEstate();
 
     void searchRealEstate();
+    std::vector<RealEstate> researchRealEstateSuperficy(int superficyMin, int superficyMax);
 
     bool isNumber(std::string str);
 
