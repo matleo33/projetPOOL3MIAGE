@@ -44,7 +44,9 @@ public:
     void removeRealEstate();
 
     void searchRealEstate();
-    std::vector<RealEstate> researchRealEstateSuperficy(int superficyMin, int superficyMax);
+    std::vector<RealEstate> researchRealEstateWithSuperficy(int superficyMin, int superficyMax);
+    std::vector<RealEstate> researchRealEstateWithType(char realEstateType);
+    std::vector<RealEstate> researchRealEstateWithBudget(unsigned int budget);
 
     bool isNumber(std::string str);
 
