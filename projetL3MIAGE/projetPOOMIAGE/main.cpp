@@ -10,9 +10,9 @@ using namespace std;
 
 /*
  * Elea : Implémenter flat.h, flat.cpp, plot.h et plot.cpp
- * Marine : Tester TOUTES LES FONCTIONNALITES du programme en testant TOUTES LES METHODES !
+ * Marine : Faire en sorte que les professionallocal, plot, house, flat soient des RealEstates, Tester TOUTES LES FONCTIONNALITES du programme en testant TOUTES LES METHODES !
  * Yonnel : Faire la fonction de recherche des biens immobilier (question 2.2 du sujet)
- * Amaury : Faire en sorte que les professionallocal, plot, house, flat soient des RealEstates, faire la lecture et l'écriture dans les fichiers biens.txt, vendeurs.txt, acheteurs.txt
+ * Amaury : Faire la lecture et l'écriture dans les fichiers biens.txt, vendeurs.txt, acheteurs.txt
  * Edward : Implémenter professionallocal.h, professionallocal.cpp, seller.h et seller.cpp et vérifier les termes anglais
  * Mathieu (qui ne fait pas rien) : Implémentation d'une classe interface qui va gérer les demandes de l'utilisateur en ligne de commande
  * */

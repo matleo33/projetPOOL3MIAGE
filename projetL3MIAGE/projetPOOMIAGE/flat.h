@@ -2,8 +2,9 @@
 #define FLAT_H
 
 #include <iostream>
+#include "realestate.h"
 
-class Flat
+class Flat : public RealEstate
 {
 private:
     unsigned short m_nbRooms;
@@ -16,18 +17,23 @@ public:
     Flat() = delete;
 
     Flat(unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
-    virtual std::string getType() const;
     //Getters
-    /*
-     * Elea
-     *
-     * */
+    virtual std::string getType() const;
+    unsigned short getNbRooms() const;
+    unsigned int getFloor() const;
+    bool getGarage() const;
+    bool getCellar() const;
+    bool getBalcony() const;
+    unsigned int getNbFlatsInBuilding() const;
+
 
     //Setters
-    /*
-     * Elea
-     *
-     * */
+    void setNbRooms(unsigned short newNbRooms);
+    void setFloor(unsigned int floor);
+    void setGarage(bool garage);
+    void setCellar(bool cellar);
+    void setBalcony(bool balcony);
+    void setNbFlatsInBuilding(unsigned int nbFlatsInBuilding);
 };
 
 #endif // FLAT_H

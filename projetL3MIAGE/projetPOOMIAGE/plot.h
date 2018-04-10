@@ -2,14 +2,23 @@
 #define PLOT_H
 
 #include <iostream>
+#include "realestate.h"
 
-class Plot
+class Plot : public RealEstate
 {
 private:
     //CONSTRUCTIBLE OU PAS?
+    bool m_constructible;
+
 public:
     Plot();
     virtual std::string getType() const;
+
+    //Getters
+    bool getConstructible() const;
+
+    //Setters
+    void setConstructible(bool constructible);
 };
 
 #endif // PLOT_H
