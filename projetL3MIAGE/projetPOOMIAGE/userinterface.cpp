@@ -343,13 +343,11 @@ void UserInterface::displayRealEstates() const
 std::vector<RealEstate> UserInterface::researchRealEstateWithSuperficy(int superficyMin, int superficyMax)
 {
     std::vector<RealEstate> result;
-    std::map<RealEstate,Seller>::iterator it;
-    for(it = m_agency->getRealEstates().begin(); it != m_agency->getRealEstates().end(); it++)
+    for(std::pair<RealEstate,Seller> it : m_agency->getRealEstates())
     {
-        if(it->first.getSurface() <= superficyMax && it->first.getSurface() >= superficyMin)
+        if(it.first.getSurface() <= superficyMax && it.first.getSurface() >= superficyMin)
         {
-            std::cout << it->first.getSurface() << std::endl;
-            result.push_back(it->first);
+            result.push_back(it.first);
         }
     }
     return result;
@@ -358,13 +356,11 @@ std::vector<RealEstate> UserInterface::researchRealEstateWithSuperficy(int super
 std::vector<RealEstate> UserInterface::researchRealEstateWithType(char realEstateType)
 {
     std::vector<RealEstate> result;
-    std::map<RealEstate,Seller>::iterator it;
-    for(it = m_agency->getRealEstates().begin(); it != m_agency->getRealEstates().end(); it++)
+    for(std::pair<RealEstate,Seller> it : m_agency->getRealEstates())
     {
-        if(it->first.getSafeType() == realEstateType)
+        if(it.first.getSafeType() == realEstateType)
         {
-            std::cout << it->first.getSafeType() << std::endl;
-            result.push_back(it->first);
+            result.push_back(it.first);
         }
     }
     return result;
@@ -373,13 +369,12 @@ std::vector<RealEstate> UserInterface::researchRealEstateWithType(char realEstat
 std::vector<RealEstate> UserInterface::researchRealEstateWithBudget(unsigned int budget)
 {
     std::vector<RealEstate> result;
-    std::map<RealEstate,Seller>::iterator it;
-    for(it = m_agency->getRealEstates().begin(); it != m_agency->getRealEstates().end(); it++)
+    for(std::pair<RealEstate,Seller> it : m_agency->getRealEstates())
     {
-        if(it->first.getPrice() <= budget)
+        if(it.first.getPrice() <= budget)
         {
-            std::cout << it->first.getPrice() << std::endl;
-            result.push_back(it->first);
+            std::cout << it.first.getPrice() << std::endl;
+            result.push_back(it.first);
         }
     }
     return result;
