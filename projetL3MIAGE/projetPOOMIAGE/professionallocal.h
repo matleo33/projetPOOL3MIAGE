@@ -14,7 +14,8 @@ private:
 public:
     //Constructors
     ProfessionalLocal();
-    ProfessionalLocal(unsigned short windowSizeSquareMeters, bool materialStorageRoom, unsigned int price, std::string address, short surface, Seller seller);
+    ProfessionalLocal(unsigned short windowSizeSquareMeters, bool materialStorageRoom,
+                      unsigned int price, std::string address, short surface, Seller seller);
 
     //Getters
     virtual std::string getType() const;

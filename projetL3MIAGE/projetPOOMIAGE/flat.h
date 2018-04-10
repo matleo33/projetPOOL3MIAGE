@@ -16,7 +16,7 @@ private:
 public:
     Flat() = delete;
 
-    Flat(unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
+    Flat(std::string address, short surface, unsigned int price, Seller s, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
     //Getters
     virtual std::string getType() const;
     virtual char getSafeType() const;

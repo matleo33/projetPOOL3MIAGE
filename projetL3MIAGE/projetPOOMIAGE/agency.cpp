@@ -150,7 +150,7 @@ bool Agency::isNumber(std::string str)
     {
         return false;
     }
-    for (int i = 0; i < str.length(); ++i)
+    for (unsigned short i = 0; i < str.length(); ++i)
     {
         if (str[i] < '0' || str[i] > '9')
         {

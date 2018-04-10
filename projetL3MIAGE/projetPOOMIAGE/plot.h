@@ -10,7 +10,8 @@ private:
     bool m_constructible;
 
 public:
-    Plot();
+    Plot() = delete;
+    Plot(bool constructible,unsigned int price, std::string address, short surface, Seller seller);
     virtual std::string getType() const;
     virtual char getSafeType() const;
 

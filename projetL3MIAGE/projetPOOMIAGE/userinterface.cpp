@@ -163,38 +163,69 @@ void UserInterface::addRealEstate()
         }  while (!isNumber(surface));
 
         seller = chooseSeller();
-        /*
+
         switch (std::stoi(type))
         {
         case 1:
         {
-            Flat f();
+            std::string rooms;
+            std::cout << "How many rooms is the flat composed by?" << std::endl;
+            do {
+                std::cin >> rooms;
+            } while (!isNumber(rooms));
+
+            std::string floor;
+            std::cout << "On which floor is the flat? (For ground floor put 0)" << std::endl;
+            do {
+                std::cin >> floor;
+            } while (!isNumber(floor));
+
+            bool garage;
+            std::cout << "Has your flat a garage? (1 for yes, 0 for no)" << std::endl;
+            std::cin >> garage;
+
+            bool cellar;
+            std::cout << "Has your flat a cellar? (1 for yes, 0 for no)" << std::endl;
+            std::cin >> cellar;
+
+            bool balcony;
+            std::cout << "Has your flat a balcony? (1 for yes, 0 for no)" << std::endl;
+            std::cin >> balcony;
+
+            std::string nbFlatBuilding;
+            std::cout << "How many flats are in the building ?" << std::endl;
+            do {
+                std::cin >> nbFlatBuilding;
+            } while (!isNumber(nbFlatBuilding));
+
+            Flat f(address, std::stoi(surface), std::stoi(price), seller, std::stoi(rooms), std::stoi(floor)
+                   , garage, cellar, balcony, std::stoi(nbFlatBuilding));
             m_agency->addRealEstate(seller, f);
             break;
         }
-        case 2 :
-        {
-            House h();
-            m_agency->addRealEstate(seller, h);
-            break;
-        }
-        case 3:
-        {
-            Plot p();
-            m_agency->addRealEstate(seller, p);
-            break;
-        }
-        case 4:
-        {
-            ProfessionalLocal pl();
-            m_agency->addRealEstate(seller, pl);
-            break;
-        }
+//        case 2 :
+//        {
+//            House h();
+//            m_agency->addRealEstate(seller, h);
+//            break;
+//        }
+//        case 3:
+//        {
+//            Plot p();
+//            m_agency->addRealEstate(seller, p);
+//            break;
+//        }
+//        case 4:
+//        {
+//            ProfessionalLocal pl();
+//            m_agency->addRealEstate(seller, pl);
+//            break;
+//        }
         default:
         {
             break;
         }
-        }*/
+        }
 
         RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
         m_agency->addRealEstate(seller,re);
