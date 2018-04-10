@@ -2,8 +2,9 @@
 #define PLOT_H
 
 #include <iostream>
+#include "realestate.h"
 
-class Plot
+class Plot : public RealEstate
 {
 private:
     //CONSTRUCTIBLE OU PAS?

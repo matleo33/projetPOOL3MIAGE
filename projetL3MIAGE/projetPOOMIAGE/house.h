@@ -2,8 +2,9 @@
 #define HOUSE_H
 
 #include <iostream>
+#include "realestate.h"
 
-class House
+class House : public RealEstate
 {
 private:
     unsigned short m_nbRooms;

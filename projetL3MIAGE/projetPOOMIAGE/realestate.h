@@ -24,6 +24,7 @@ public:
     short getSurface() const;
     Seller getSeller() const;
     int getIdentifier() const;
+
     virtual std::string getType() const;
 
     //Setters
