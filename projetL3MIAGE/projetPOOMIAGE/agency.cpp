@@ -28,6 +28,13 @@ void Agency::sell(RealEstate re)
 
 void Agency::save()
 {
+    saveSellers();
+    saveBuyers();
+    saveRealEstates();
+}
+
+void Agency::saveSellers()
+{
     std::ofstream file_sellers("../save/sellers.txt", std::ios::out | std::ios::trunc);
     if(file_sellers) {
         for(Seller it : m_sellers) {
@@ -38,7 +45,10 @@ void Agency::save()
     } else {
         std::cerr << "Can not open sellers.txt" << std::endl;
     }
+}
 
+void Agency::saveBuyers()
+{
     std::ofstream file_buyers("../save/buyers.txt", std::ios::out | std::ios::trunc);
     if(file_buyers) {
         for(Buyer it : m_buyers) {
@@ -49,19 +59,29 @@ void Agency::save()
     } else {
         std::cerr << "Can not open buyers.txt" << std::endl;
     }
+}
 
+void Agency::saveRealEstates()
+{
     std::ofstream file_realEstates("../save/realEstates.txt", std::ios::out | std::ios::trunc);
     if(file_realEstates) {
         for (std::pair<RealEstate,Customer> it : m_realEstates) {
             if(it.first.getSafeType() == 'a') {
-                //Flat f = (it.first);
+                Flat f = dynamic_cast<Flat&>(it.first);
                 std::cout << 'a' << std::endl;
+
             } else if(it.first.getSafeType() == 'l') {
+                ProfessionalLocal pl = dynamic_cast<ProfessionalLocal&>(it.first);
                 std::cout << 'l' << std::endl;
+
             } else if(it.first.getSafeType() == 'm') {
+                House h = dynamic_cast<House&>(it.first);
                 std::cout << 'm' << std::endl;
+
             } else if (it.first.getSafeType() == 't') {
+                Plot p = dynamic_cast<Plot&>(it.first);
                 std::cout << 't' << std::endl;
+
             } else {
                 //comportement en cas d'erreur ?
             }
@@ -70,11 +90,15 @@ void Agency::save()
     //file_realEstates << it.first.getIdentifier() << ":" << it.first.getSeller().getId() << ":" << "\n" << std::endl;
 
     file_realEstates.close();
-
-
 }
 
 void Agency::open()
+{
+    openSellers();
+    openBuyers();
+}
+
+void Agency::openSellers()
 {
     std::ifstream file_sellers("../save/sellers.txt", std::ios::in);
     if(file_sellers) {
@@ -90,7 +114,10 @@ void Agency::open()
     } else {
         std::cerr << "Can not open sellers.txt" << std::endl;
     }
+}
 
+void Agency::openBuyers()
+{
     std::ifstream file_buyers("../save/buyers.txt", std::ios::in);
     if(file_buyers) {
         std::string content;
@@ -105,7 +132,6 @@ void Agency::open()
     } else {
         std::cerr << "Can not open buyers.txt" << std::endl;
     }
-
 }
 
 std::vector<Seller> Agency::getSellers()const

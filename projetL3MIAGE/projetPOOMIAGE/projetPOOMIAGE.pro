@@ -28,3 +28,8 @@ HEADERS += \
     professionallocal.h \
     agency.h \
     userinterface.h
+
+DISTFILES += \
+    ../save/buyers.txt \
+    ../save/realEstates.txt \
+    ../save/sellers.txt
