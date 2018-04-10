@@ -5,7 +5,7 @@ std::vector<Customer> Agency::getCustomers() const
     return m_customers;
 }
 
-std::map<RealEstate, Seller> Agency::getRealEstates() const
+std::map<RealEstate*, Seller> Agency::getRealEstates() const
 {
     return m_realEstates;
 }
@@ -15,14 +15,14 @@ void Agency::addCustomer(Customer &customer)
     m_customers.push_back(customer);
 }
 
-void Agency::addRealEstate(Seller &seller, RealEstate &RealEstate)
+void Agency::addRealEstate(Seller &seller, RealEstate *RealEstate)
 {
     m_realEstates.insert(std::make_pair(RealEstate, seller));
 }
 
 void Agency::sell(RealEstate re)
 {
-    m_realEstates.erase(m_realEstates.find(re));
+    m_realEstates.erase(m_realEstates.find(&re));
     std::cout << "Real estate sold" << std::endl;
 }
 
@@ -65,21 +65,21 @@ void Agency::saveRealEstates()
 {
     std::ofstream file_realEstates("../save/realEstates.txt", std::ios::out | std::ios::trunc);
     if(file_realEstates) {
-        for (std::pair<RealEstate,Customer> it : m_realEstates) {
-            if(it.first.getSafeType() == 'a') {
-                Flat f = dynamic_cast<Flat&>(it.first);
+        for (std::pair<RealEstate*,Customer> it : m_realEstates) {
+            if(it.first->getSafeType() == 'a') {
+                Flat *f = dynamic_cast<Flat*>(it.first);
                 std::cout << 'a' << std::endl;
 
-            } else if(it.first.getSafeType() == 'l') {
-                ProfessionalLocal pl = dynamic_cast<ProfessionalLocal&>(it.first);
+            } else if(it.first->getSafeType() == 'l') {
+                ProfessionalLocal *pl = dynamic_cast<ProfessionalLocal*>(it.first);
                 std::cout << 'l' << std::endl;
 
-            } else if(it.first.getSafeType() == 'm') {
-                House h = dynamic_cast<House&>(it.first);
+            } else if(it.first->getSafeType() == 'm') {
+                House *h = dynamic_cast<House*>(it.first);
                 std::cout << 'm' << std::endl;
 
-            } else if (it.first.getSafeType() == 't') {
-                Plot p = dynamic_cast<Plot&>(it.first);
+            } else if (it.first->getSafeType() == 't') {
+                Plot *p = dynamic_cast<Plot*>(it.first);
                 std::cout << 't' << std::endl;
 
             } else {
@@ -220,7 +220,7 @@ void Agency::removeSeller()
         std::cin >> choice;
     } while (!isNumber(choice) && std::stoi(choice) > m_sellers.size());
     //Remove all their real estates
-    for (std::pair<RealEstate, Seller> pre : m_realEstates)
+    for (std::pair<RealEstate*, Seller> pre : m_realEstates)
     {
         if (pre.second.getId() == m_sellers[std::stoi(choice) - 1].getId())
         {
@@ -233,5 +233,5 @@ void Agency::removeSeller()
 
 void Agency::removeRealEstate(RealEstate re)
 {
-    m_realEstates.erase(m_realEstates.find(re));
+    m_realEstates.erase(m_realEstates.find(&re));
 }

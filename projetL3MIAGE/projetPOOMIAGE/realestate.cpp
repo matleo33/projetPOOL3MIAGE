@@ -65,5 +65,5 @@ bool RealEstate::operator==(const RealEstate & re) const
 
 void RealEstate::display() const
 {
-
+    std::cout << "BECAUSE THIS IS MY REAL ESTAAAAAAATE" << std::endl;
 }

@@ -15,8 +15,8 @@ private:
     unsigned int m_nbFlatsInBuilding;
 public:
     Flat() = delete;
-
     Flat(std::string address, short surface, unsigned int price, Seller s, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
+
     //Getters
     virtual std::string getType() const;
     virtual char getSafeType() const;
@@ -27,7 +27,6 @@ public:
     bool getBalcony() const;
     unsigned int getNbFlatsInBuilding() const;
 
-
     //Setters
     void setNbRooms(unsigned short newNbRooms);
     void setFloor(unsigned int floor);
@@ -35,6 +34,9 @@ public:
     void setCellar(bool cellar);
     void setBalcony(bool balcony);
     void setNbFlatsInBuilding(unsigned int nbFlatsInBuilding);
+
+    //Other Methods
+    void display() const;
 };
 
 #endif // FLAT_H

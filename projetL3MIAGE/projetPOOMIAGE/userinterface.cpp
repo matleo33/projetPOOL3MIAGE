@@ -92,12 +92,12 @@ RealEstate UserInterface::chooseRealEstate(Seller s)
     int i = 1;
     std::string choice;
     std::vector <RealEstate> vre;
-    for (std::pair<RealEstate, Seller> re : m_agency->getRealEstates())
+    for (std::pair<RealEstate*, Seller> re : m_agency->getRealEstates())
     {
         if (re.second.getId() == s.getId())
         {
-            std::cout << i << ") " << re.first.getAddress() << " : " << re.first.getPrice() << " ; " << re.first.getSurface() << std::endl;
-            vre.push_back(re.first);
+            std::cout << i << ") " << re.first->getAddress() << " : " << re.first->getPrice() << " ; " << re.first->getSurface() << std::endl;
+            vre.push_back(*re.first);
         }
     }
     //Make the user choose
@@ -198,7 +198,7 @@ void UserInterface::addRealEstate()
                 std::cin >> nbFlatBuilding;
             } while (!isNumber(nbFlatBuilding));
 
-            Flat f(address, std::stoi(surface), std::stoi(price), seller, std::stoi(rooms), std::stoi(floor)
+            Flat *f = new Flat(address, std::stoi(surface), std::stoi(price), seller, std::stoi(rooms), std::stoi(floor)
                    , garage, cellar, balcony, std::stoi(nbFlatBuilding));
             m_agency->addRealEstate(seller, f);
             break;
@@ -227,8 +227,8 @@ void UserInterface::addRealEstate()
         }
         }
 
-        RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
-        m_agency->addRealEstate(seller,re);
+        //RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
+        //m_agency->addRealEstate(seller,re);
         m_agency->save();
     }
 }
@@ -331,11 +331,12 @@ void UserInterface::displayRealEstates() const
     {
         std::cout << "There is not any real estates" << std::endl;
     } else {
-        for (std::pair<RealEstate,Customer> re : this->m_agency->getRealEstates())
+        for (std::pair<RealEstate*,Customer> re : this->m_agency->getRealEstates())
         {
-            std::cout << "The " << re.first.getType() << " n°" << re.first.getIdentifier() << " is available for $";
-            std::cout << re.first.getPrice() << " and is sold by " << re.first.getSeller().getFirstName();
-            std::cout << " " << re.first.getSeller().getName() << std::endl;
+            std::cout << "The " << re.first->getType() << " n°" << re.first->getIdentifier() << " is available for $";
+            std::cout << re.first->getPrice() << " and is sold by " << re.first->getSeller().getFirstName();
+            std::cout << " " << re.first->getSeller().getName() << std::endl;
+            re.first->display();
         }
     }
 }
@@ -343,11 +344,11 @@ void UserInterface::displayRealEstates() const
 std::vector<RealEstate> UserInterface::researchRealEstateWithSuperficy(int superficyMin, int superficyMax)
 {
     std::vector<RealEstate> result;
-    for(std::pair<RealEstate,Seller> it : m_agency->getRealEstates())
+    for(std::pair<RealEstate*,Seller> it : m_agency->getRealEstates())
     {
-        if(it.first.getSurface() <= superficyMax && it.first.getSurface() >= superficyMin)
+        if(it.first->getSurface() <= superficyMax && it.first->getSurface() >= superficyMin)
         {
-            result.push_back(it.first);
+            result.push_back(*it.first);
         }
     }
     return result;
@@ -356,11 +357,11 @@ std::vector<RealEstate> UserInterface::researchRealEstateWithSuperficy(int super
 std::vector<RealEstate> UserInterface::researchRealEstateWithType(char realEstateType)
 {
     std::vector<RealEstate> result;
-    for(std::pair<RealEstate,Seller> it : m_agency->getRealEstates())
+    for(std::pair<RealEstate*,Seller> it : m_agency->getRealEstates())
     {
-        if(it.first.getSafeType() == realEstateType)
+        if(it.first->getSafeType() == realEstateType)
         {
-            result.push_back(it.first);
+            result.push_back(*it.first);
         }
     }
     return result;
@@ -369,12 +370,12 @@ std::vector<RealEstate> UserInterface::researchRealEstateWithType(char realEstat
 std::vector<RealEstate> UserInterface::researchRealEstateWithBudget(unsigned int budget)
 {
     std::vector<RealEstate> result;
-    for(std::pair<RealEstate,Seller> it : m_agency->getRealEstates())
+    for(std::pair<RealEstate*,Seller> it : m_agency->getRealEstates())
     {
-        if(it.first.getPrice() <= budget)
+        if(it.first->getPrice() <= budget)
         {
-            std::cout << it.first.getPrice() << std::endl;
-            result.push_back(it.first);
+            std::cout << it.first->getPrice() << std::endl;
+            result.push_back(*it.first);
         }
     }
     return result;

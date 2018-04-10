@@ -22,21 +22,21 @@ private:
     std::vector<Customer> m_customers;
     std::vector<Seller> m_sellers;
     std::vector<Buyer> m_buyers;
-    std::map<RealEstate, Seller> m_realEstates;
+    std::map<RealEstate*, Seller> m_realEstates;
 public:
     //Constructors
     Agency() = default;
 
     //Getters
     std::vector<Customer> getCustomers() const;
-    std::map<RealEstate, Seller> getRealEstates() const;
+    std::map<RealEstate *, Seller> getRealEstates() const;
     std::vector<Seller> getSellers() const;
     std::vector<Buyer> getBuyers() const;
     //Setters
 
     //Other Methods
     void addCustomer(Customer &customer);
-    void addRealEstate(Seller &seller, RealEstate &RealEstate);
+    void addRealEstate(Seller &seller, RealEstate *RealEstate);
     void addBuyer(Buyer &b);
     void addSeller(Seller &s);
     void removeBuyer();

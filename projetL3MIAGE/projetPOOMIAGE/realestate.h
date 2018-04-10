@@ -35,7 +35,7 @@ public:
     bool operator ==(const RealEstate & re) const;
 
     //Others
-    void display() const;
+    virtual void display() const;
 };
 
 #endif // REALESTATE_H

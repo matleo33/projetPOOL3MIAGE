@@ -78,3 +78,8 @@ void Flat::setNbFlatsInBuilding(unsigned int newNbFlatsInBuilding)
 {
     this->m_nbFlatsInBuilding = newNbFlatsInBuilding;
 }
+
+void Flat::display() const
+{
+    std::cout << "BECAUSE THIS IS MY FLAAAAAT" << std::endl;
+}
