@@ -9,7 +9,6 @@ private:
     //LISTE BIENS QU'ILS SOUHAIENT VENDRE
 public:
     Seller();
-    virtual std::string getType() const;
 };
 
 #endif // SELLER_H

@@ -2,8 +2,9 @@
 #define FLAT_H
 
 #include <iostream>
+#include "realestate.h"
 
-class Flat
+class Flat : public RealEstate
 {
 private:
     unsigned short m_nbRooms;
