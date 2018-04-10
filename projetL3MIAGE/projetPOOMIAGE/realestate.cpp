@@ -52,3 +52,8 @@ bool RealEstate::operator<(const RealEstate & re) const
 {
     return (this->getIdentifier() < re.getIdentifier());
 }
+
+bool RealEstate::operator==(const RealEstate & re) const
+{
+    return (this->getIdentifier() == re.getIdentifier());
+}

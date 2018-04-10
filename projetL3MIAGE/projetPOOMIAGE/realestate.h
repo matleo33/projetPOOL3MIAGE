@@ -30,6 +30,7 @@ public:
 
     //Operator
     bool operator<(const RealEstate & re) const;
+    bool operator ==(const RealEstate & re) const;
 };
 
 #endif // REALESTATE_H
