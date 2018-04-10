@@ -1,8 +1,10 @@
 #include "house.h"
 
-House::House(unsigned short nbRooms, bool swimmingPool, bool garage)
-    :m_nbRooms(nbRooms), m_swimmingPool(swimmingPool), m_garage(garage)
-{}
+House::House(std::string address, short surface, unsigned int price, Seller seller, unsigned short nbRooms, bool swimmingPool, bool garage)
+    :RealEstate(price, address, surface, seller), m_nbRooms(nbRooms), m_swimmingPool(swimmingPool), m_garage(garage)
+{
+
+}
 
 unsigned short House::getNbRooms() const
 {
@@ -39,7 +41,7 @@ std::string House::getType() const
     return "house";
 }
 
-char House::getSafeType() const
+char House::getSaveType() const
 {
     return 'm';
 }

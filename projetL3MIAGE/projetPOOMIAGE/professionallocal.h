@@ -19,12 +19,13 @@ public:
 
     //Getters
     virtual std::string getType() const;
+    virtual char getSaveType() const;
     bool getMaterialStorageRoom() const;
+    unsigned short getWindowSizeSquareMeters() const;
 
     //Setters
     void setMaterialStorageRoom(bool newMaterialStorageRoom);
     void setWindowSizeSquareMeters(int newWindowSizeSquareMeters);
-    virtual char getSafeType() const;
 };
 
 #endif // PROFESSIONALLOCAL_H

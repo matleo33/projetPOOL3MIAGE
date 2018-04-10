@@ -66,20 +66,32 @@ void Agency::saveRealEstates()
     std::ofstream file_realEstates("../save/realEstates.txt", std::ios::out | std::ios::trunc);
     if(file_realEstates) {
         for (std::pair<RealEstate*,Customer> it : m_realEstates) {
-            if(it.first->getSafeType() == 'a') {
+            if(it.first->getSaveType() == 'a') {
                 Flat *f = dynamic_cast<Flat*>(it.first);
+                file_realEstates << f->getPrice() << ":" << f->getAddress() << ":" << f->getSurface() << ":"
+                                 << f->getSeller().getId() << ":" << f->getNbRooms() << ":" << f->getFloor()
+                                 << ":" << f->getGarage() << ":" << f->getGarage() << ":" << f->getCellar()
+                                 << ":" << f->getBalcony() << ":" << f->getNbFlatsInBuilding();
                 std::cout << 'a' << std::endl;
 
-            } else if(it.first->getSafeType() == 'l') {
+            } else if(it.first->getSaveType() == 'l') {
                 ProfessionalLocal *pl = dynamic_cast<ProfessionalLocal*>(it.first);
+                file_realEstates << pl->getWindowSizeSquareMeters() << ":" << pl->getMaterialStorageRoom()
+                                 << ":" << pl->getPrice() << ":" << pl->getAddress() << ":" << pl->getSurface()
+                                 << ":" << pl->getSeller().getId();
                 std::cout << 'l' << std::endl;
 
-            } else if(it.first->getSafeType() == 'm') {
+            } else if(it.first->getSaveType() == 'm') {
                 House *h = dynamic_cast<House*>(it.first);
+                file_realEstates << h->getPrice() << ":" << h->getAddress() << ":" << h->getSurface() << ":"
+                                 << h->getSeller().getId() << ":" << h->getNbRooms() << ":"
+                                 << h->hasSwimmingPool() << ":" << h->hasGarage();
                 std::cout << 'm' << std::endl;
 
-            } else if (it.first->getSafeType() == 't') {
+            } else if (it.first->getSaveType() == 't') {
                 Plot *p = dynamic_cast<Plot*>(it.first);
+                file_realEstates << p->getPrice() << ":" << p->getAddress() << ":" << p->getSurface() << ":"
+                                 << p->getSeller().getId() << ":" << p->getConstructible();
                 std::cout << 't' << std::endl;
 
             } else {
