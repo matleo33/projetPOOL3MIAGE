@@ -12,6 +12,9 @@
 #include "buyer.h"
 #include "visit.h"
 #include "flat.h"
+#include "professionallocal.h"
+#include "house.h"
+#include "plot.h"
 
 class Agency
 {
@@ -41,6 +44,11 @@ public:
     void removeRealEstate(RealEstate re);
     void sell(RealEstate re);
     void save();
+    void saveSellers();
+    void saveBuyers();
+    void saveRealEstates();
+    void openSellers();
+    void openBuyers();
     void open();
     std::vector<std::string> split(std::string stringToSplit, char separator);
 

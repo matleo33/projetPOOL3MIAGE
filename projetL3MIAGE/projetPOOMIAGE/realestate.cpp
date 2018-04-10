@@ -62,3 +62,8 @@ bool RealEstate::operator==(const RealEstate & re) const
 {
     return (this->getIdentifier() == re.getIdentifier());
 }
+
+void RealEstate::display() const
+{
+
+}
