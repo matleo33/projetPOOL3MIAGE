@@ -26,6 +26,7 @@ public:
     int getIdentifier() const;
 
     virtual std::string getType() const;
+    virtual char getSafeType() const;
 
     //Setters
 

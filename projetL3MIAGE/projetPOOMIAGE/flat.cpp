@@ -9,6 +9,11 @@ std::string Flat::getType() const
     return "flat";
 }
 
+char Flat::getSafeType() const
+{
+    return 'a';
+}
+
 unsigned short Flat::getNbRooms() const
 {
     return m_nbRooms;

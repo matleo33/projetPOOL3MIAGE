@@ -19,6 +19,7 @@ public:
     Flat(unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
     //Getters
     virtual std::string getType() const;
+    virtual char getSafeType() const;
     unsigned short getNbRooms() const;
     unsigned int getFloor() const;
     bool getGarage() const;

@@ -53,11 +53,24 @@ void Agency::save()
     std::ofstream file_realEstates("../save/realEstates.txt", std::ios::out | std::ios::trunc);
     if(file_realEstates) {
         for (std::pair<RealEstate,Customer> it : m_realEstates) {
-            std::cout << it.first.getIdentifier() << ":" << it.first.getSeller().getId() << std::endl;
-            file_realEstates << it.first.getIdentifier() << ":" << it.first.getSeller().getId() << "\n" << std::endl;
+            if(it.first.getSafeType() == 'a') {
+                //Flat f = (it.first);
+                std::cout << 'a' << std::endl;
+            } else if(it.first.getSafeType() == 'l') {
+                std::cout << 'l' << std::endl;
+            } else if(it.first.getSafeType() == 'm') {
+                std::cout << 'm' << std::endl;
+            } else if (it.first.getSafeType() == 't') {
+                std::cout << 't' << std::endl;
+            } else {
+                //comportement en cas d'erreur ?
+            }
         }
-        file_realEstates.close();
     }
+    //file_realEstates << it.first.getIdentifier() << ":" << it.first.getSeller().getId() << ":" << "\n" << std::endl;
+
+    file_realEstates.close();
+
 
 }
 

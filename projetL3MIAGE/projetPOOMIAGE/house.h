@@ -20,6 +20,7 @@ public:
     bool hasSwimmingPool() const;
     bool hasGarage() const;
     virtual std::string getType() const;
+    virtual char getSafeType() const;
 
     //Setters
     void setNbRooms(unsigned short nbRooms);

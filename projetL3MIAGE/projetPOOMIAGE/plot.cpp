@@ -10,6 +10,11 @@ std::string Plot::getType() const
     return "plot";
 }
 
+char Plot::getSafeType() const
+{
+    return 't';
+}
+
 bool Plot::getConstructible() const
 {
     return m_constructible;

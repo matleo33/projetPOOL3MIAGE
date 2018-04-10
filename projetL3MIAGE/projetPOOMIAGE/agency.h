@@ -11,6 +11,7 @@
 #include "realestate.h"
 #include "buyer.h"
 #include "visit.h"
+#include "flat.h"
 
 class Agency
 {

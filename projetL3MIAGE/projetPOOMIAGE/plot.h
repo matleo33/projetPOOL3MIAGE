@@ -7,12 +7,12 @@
 class Plot : public RealEstate
 {
 private:
-    //CONSTRUCTIBLE OU PAS?
     bool m_constructible;
 
 public:
     Plot();
     virtual std::string getType() const;
+    virtual char getSafeType() const;
 
     //Getters
     bool getConstructible() const;

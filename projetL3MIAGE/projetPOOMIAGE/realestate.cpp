@@ -48,6 +48,11 @@ std::string RealEstate::getType() const
     return "real estate";
 }
 
+char RealEstate::getSafeType() const
+{
+    return 'r';
+}
+
 bool RealEstate::operator<(const RealEstate & re) const
 {
     return (this->getIdentifier() < re.getIdentifier());

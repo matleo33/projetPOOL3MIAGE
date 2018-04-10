@@ -38,3 +38,8 @@ std::string House::getType() const
 {
     return "house";
 }
+
+char House::getSafeType() const
+{
+    return 'm';
+}

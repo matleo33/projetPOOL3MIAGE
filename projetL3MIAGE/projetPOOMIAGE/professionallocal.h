@@ -23,6 +23,7 @@ public:
     //Setters
     void setMaterialStorageRoom(bool newMaterialStorageRoom);
     void setWindowSizeSquareMeters(int newWindowSizeSquareMeters);
+    virtual char getSafeType() const;
 };
 
 #endif // PROFESSIONALLOCAL_H

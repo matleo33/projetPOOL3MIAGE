@@ -33,3 +33,8 @@ void ProfessionalLocal::setWindowSizeSquareMeters(int newWindowSizeSquareMeters)
 {
     m_windowSizeSquareMeters = newWindowSizeSquareMeters;
 }
+
+char ProfessionalLocal::getSafeType() const
+{
+    return 'l';
+}
