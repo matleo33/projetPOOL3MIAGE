@@ -58,6 +58,7 @@ public:
     void open();
     std::vector<std::string> split(std::string stringToSplit, char separator);
 
+    Seller findSeller(std::string id) const;
     bool isNumber(std::string str);
 };
 
