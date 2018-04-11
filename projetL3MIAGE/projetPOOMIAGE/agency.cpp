@@ -144,6 +144,7 @@ void Agency::openBuyers()
 void Agency::openFlat(std::vector<std::string> infos)
 {
     Seller s = findSeller(infos[4]);
+    //Flat *f; //= new Flat(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), s, std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]), std::stoi(infos[8]), std::stoi(infos[9]), std::stoi(infos[10]));
     Flat *f = new Flat(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), s, std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]), std::stoi(infos[8]), std::stoi(infos[9]), std::stoi(infos[10]));
     addRealEstate(s, f);
 }
@@ -151,7 +152,6 @@ void Agency::openFlat(std::vector<std::string> infos)
 void Agency::openRealEstates()
 {
     std::ifstream file_realEstates("../save/realEstates.txt", std::ios::in);
-    system("pwd");
     if(file_realEstates) {
         std::string content;
         while(std::getline(file_realEstates, content)) {
@@ -185,6 +185,7 @@ Seller Agency::findSeller(std::string id)
             return s;
         }
     }
+    return Seller();
 }
 
 std::vector<Seller> Agency::getSellers()const
