@@ -68,39 +68,33 @@ void Agency::saveRealEstates()
         for (std::pair<RealEstate*,Customer> it : m_realEstates) {
             if(it.first->getSaveType() == 'a') {
                 Flat *f = dynamic_cast<Flat*>(it.first);
-                file_realEstates << f->getPrice() << ":" << f->getAddress() << ":" << f->getSurface() << ":"
+                file_realEstates << "a:" << f->getAddress() << ":" << f->getSurface() << ":" << f->getPrice() << ":"
                                  << f->getSeller().getId() << ":" << f->getNbRooms() << ":" << f->getFloor()
                                  << ":" << f->getGarage() << ":" << f->getGarage() << ":" << f->getCellar()
                                  << ":" << f->getBalcony() << ":" << f->getNbFlatsInBuilding();
-                std::cout << 'a' << std::endl;
 
             } else if(it.first->getSaveType() == 'l') {
                 ProfessionalLocal *pl = dynamic_cast<ProfessionalLocal*>(it.first);
-                file_realEstates << pl->getWindowSizeSquareMeters() << ":" << pl->getMaterialStorageRoom()
+                file_realEstates << "l:" << pl->getWindowSizeSquareMeters() << ":" << pl->getMaterialStorageRoom()
                                  << ":" << pl->getPrice() << ":" << pl->getAddress() << ":" << pl->getSurface()
                                  << ":" << pl->getSeller().getId();
-                std::cout << 'l' << std::endl;
 
             } else if(it.first->getSaveType() == 'm') {
                 House *h = dynamic_cast<House*>(it.first);
-                file_realEstates << h->getPrice() << ":" << h->getAddress() << ":" << h->getSurface() << ":"
+                file_realEstates << "h:" << h->getPrice() << ":" << h->getAddress() << ":" << h->getSurface() << ":"
                                  << h->getSeller().getId() << ":" << h->getNbRooms() << ":"
                                  << h->hasSwimmingPool() << ":" << h->hasGarage();
-                std::cout << 'm' << std::endl;
 
             } else if (it.first->getSaveType() == 't') {
                 Plot *p = dynamic_cast<Plot*>(it.first);
-                file_realEstates << p->getPrice() << ":" << p->getAddress() << ":" << p->getSurface() << ":"
+                file_realEstates << "t:" << p->getPrice() << ":" << p->getAddress() << ":" << p->getSurface() << ":"
                                  << p->getSeller().getId() << ":" << p->getConstructible();
-                std::cout << 't' << std::endl;
 
             } else {
                 //comportement en cas d'erreur ?
             }
         }
     }
-    //file_realEstates << it.first.getIdentifier() << ":" << it.first.getSeller().getId() << ":" << "\n" << std::endl;
-
     file_realEstates.close();
 }
 
@@ -108,6 +102,7 @@ void Agency::open()
 {
     openSellers();
     openBuyers();
+    openRealEstates();
 }
 
 void Agency::openSellers()
@@ -140,6 +135,41 @@ void Agency::openBuyers()
             b.setFirstName(buyer_infos[1]);
             b.setAddress(buyer_infos[2]);
             m_buyers.push_back(b);
+        }
+    } else {
+        std::cerr << "Can not open buyers.txt" << std::endl;
+    }
+}
+
+Flat Agency::openFlat(std::vector<std::string> infos)
+{
+    Flat f(infos[1], infos[2], infos[3], infos[4]/*getHisID*/, infos[5], infos[6], infos[7], infos[8], infos[9], infos[10]);
+    return f;
+}
+
+void Agency::openRealEstates()
+{
+    std::ifstream file_realEstates("../save/realEstates.txt", std::ios::in);
+    if(file_realEstates) {
+        std::string content;
+        while(std::getline(file_realEstates, content)) {
+            std::vector<std::string> realEstate_infos = split(content,':');
+            if(realEstate_infos[0] == "a")
+            {
+                openFlat(realEstate_infos);
+                //open Flat
+            } else if(realEstate_infos[0] == "l") {
+                //open professionnal local
+            } else if(realEstate_infos[0] == "m") {
+                //open house
+            } else if(realEstate_infos[0] == "t") {
+                //open plot
+            } else {
+                //Comportement en cas d'erreur ?
+            }
+
+
+
         }
     } else {
         std::cerr << "Can not open buyers.txt" << std::endl;

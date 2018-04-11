@@ -43,12 +43,18 @@ public:
     void removeSeller();
     void removeRealEstate(RealEstate re);
     void sell(RealEstate re);
+
+    //save methods
     void save();
     void saveSellers();
     void saveBuyers();
     void saveRealEstates();
+
+    //Open methods
     void openSellers();
     void openBuyers();
+    Flat openFlat(std::vector<std::string> infos);
+    void openRealEstates();
     void open();
     std::vector<std::string> split(std::string stringToSplit, char separator);
 
