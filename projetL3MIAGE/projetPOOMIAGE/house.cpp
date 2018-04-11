@@ -45,3 +45,19 @@ char House::getSaveType() const
 {
     return 'm';
 }
+
+void House::display() const
+{
+    std::cout << "This is a house sold by " << m_seller.getFirstName() << " " << m_seller.getName() << std::endl;
+    std::cout << "This house is located at " << m_address << std::endl;
+    std::cout << "It is sold for $" << m_price << std::endl;
+    std::cout << "Its surface is " << m_surface << " divided in " << m_nbRooms << " rooms." << std::endl;
+    if (m_swimmingPool)
+    {
+        std::cout << "This house has a swimming pool." << std::endl;
+    }
+    if(m_garage)
+    {
+        std::cout << "This house has also a garage." << std::endl;
+    }
+}

@@ -78,7 +78,7 @@ void Flat::setNbFlatsInBuilding(unsigned int newNbFlatsInBuilding)
 
 void Flat::display() const
 {
-    std::cout << "This is a flat sold by " << m_seller.m_firstName << " " << m_seller.m_name << std::endl;
+    std::cout << "This is a flat sold by " << m_seller.getFirstName() << " " << m_seller.getName() << std::endl;
     std::cout << "This flat is located at " << m_address << std::endl;
     std::cout << "It is sold for $" << m_price << std::endl;
     std::cout << "Its surface is " << m_surface << " divided in " << m_nbRooms << " rooms." << std::endl;

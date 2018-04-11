@@ -26,6 +26,9 @@ public:
     void setNbRooms(unsigned short nbRooms);
     void setSwimmingPool(bool has);
     void setGarage(bool has);
+
+    //Other Methods
+    void display() const;
 };
 
 #endif // HOUSE_H

@@ -53,12 +53,12 @@ public:
     //Open methods
     void openSellers();
     void openBuyers();
-    Flat openFlat(std::vector<std::string> infos);
+    void openFlat(std::vector<std::string> infos);
     void openRealEstates();
     void open();
     std::vector<std::string> split(std::string stringToSplit, char separator);
 
-    Seller findSeller(std::string id) const;
+    Seller findSeller(std::string id);
     bool isNumber(std::string str);
 };
 

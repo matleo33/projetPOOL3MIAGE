@@ -141,10 +141,11 @@ void Agency::openBuyers()
     }
 }
 
-Flat Agency::openFlat(std::vector<std::string> infos)
+void Agency::openFlat(std::vector<std::string> infos)
 {
-    Flat f(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), findSeller(infos[4]), std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]), std::stoi(infos[8]), std::stoi(infos[9]), std::stoi(infos[10]));
-    return f;
+    Seller s = findSeller(infos[4]);
+    Flat *f = new Flat(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), s, std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]), std::stoi(infos[8]), std::stoi(infos[9]), std::stoi(infos[10]));
+    addRealEstate(s, f);
 }
 
 void Agency::openRealEstates()
@@ -177,7 +178,7 @@ void Agency::openRealEstates()
     }
 }
 
-Seller Agency::findSeller(std::string id) const
+Seller Agency::findSeller(std::string id)
 {
     for(Seller s : m_sellers) {
         if(s.getId() == std::stoi(id)) {

@@ -14,7 +14,7 @@ private:
     bool m_balcony;
     unsigned int m_nbFlatsInBuilding;
 public:
-    Flat() = delete;
+    Flat() = default;
     Flat(std::string address, short surface, unsigned int price, Seller s, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
 
     //Getters
