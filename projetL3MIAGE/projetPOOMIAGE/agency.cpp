@@ -143,8 +143,8 @@ void Agency::openBuyers()
 
 Flat Agency::openFlat(std::vector<std::string> infos)
 {
-    Flat f(infos[1], infos[2], infos[3], infos[4]/*getHisID*/, infos[5], infos[6], infos[7], infos[8], infos[9], infos[10]);
-    return f;
+//    Flat f(infos[1], infos[2], infos[3], infos[4]/*getHisID*/, infos[5], infos[6], infos[7], infos[8], infos[9], infos[10]);
+//    return f;
 }
 
 void Agency::openRealEstates()

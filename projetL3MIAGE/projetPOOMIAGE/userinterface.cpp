@@ -203,32 +203,54 @@ void UserInterface::addRealEstate()
             m_agency->addRealEstate(seller, f);
             break;
         }
-//        case 2 :
-//        {
-//            House h();
-//            m_agency->addRealEstate(seller, h);
-//            break;
-//        }
-//        case 3:
-//        {
-//            Plot p();
-//            m_agency->addRealEstate(seller, p);
-//            break;
-//        }
-//        case 4:
-//        {
-//            ProfessionalLocal pl();
-//            m_agency->addRealEstate(seller, pl);
-//            break;
-//        }
+        case 2 :
+        {
+            std::string nbRooms;
+            std::cout << "How many rooms does compose the house?" << std::endl;
+            do {
+                std::cin >> nbRooms;
+            } while (!isNumber(nbRooms));
+
+            bool swimmingPool;
+            std::cout << "Has the house got a swimming pool? (1 for yes, 0 for no)" << std::endl;
+            std::cin >> swimmingPool;
+
+            bool garage;
+            std::cout << "Has the house got a garage? (1 for yes, 0 for no)" << std::endl;
+            std::cin >> garage;
+
+            House *h = new House(address, std::stoi(surface), std::stoi(price), seller, std::stoi(nbRooms), swimmingPool, garage);
+            m_agency->addRealEstate(seller, h);
+            break;
+        }
+        case 3:
+        {
+            bool constructible;
+            std::cout << "Is the plot constructible? (1 for yes, 0 for no)"<< std::endl;
+            std::cin >> constructible;
+
+            Plot *p = new Plot(constructible, std::stoi(price), address, std::stoi(surface), seller);
+            m_agency->addRealEstate(seller, p);
+            break;
+        }
+        case 4:
+        {
+            std::string windowSizeSquareMeters;
+            std::cout << "What is the size of the window (in square meters)?" << std::endl;
+            std::cin >> windowSizeSquareMeters;
+
+            bool materialStorageRoom;
+            std::cout << "Has the local a room for the storage of material? (1 for yes, 0 for no)" << std::endl;
+            std::cin >> materialStorageRoom;
+            ProfessionalLocal *pl = new ProfessionalLocal(std::stoi(windowSizeSquareMeters), materialStorageRoom, std::stoi(price),address, std::stoi(surface), seller);
+            m_agency->addRealEstate(seller, pl);
+            break;
+        }
         default:
         {
             break;
         }
         }
-
-        //RealEstate re = RealEstate((unsigned int)std::stoi(price), address, (unsigned short)std::stoi(surface), seller);
-        //m_agency->addRealEstate(seller,re);
         m_agency->save();
     }
 }

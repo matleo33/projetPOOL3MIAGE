@@ -7,9 +7,7 @@
 class ProfessionalLocal : public RealEstate
 {
 private:
-    //TAILLE VITRINE
     unsigned short m_windowSizeSquareMeters;
-    //PRESENCE D'UNE PIECE POUR LE STOCKAGE DES MATERIAUX
     bool m_materialStorageRoom;
 public:
     //Constructors
