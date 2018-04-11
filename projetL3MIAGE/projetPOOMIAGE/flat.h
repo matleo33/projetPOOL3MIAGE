@@ -19,7 +19,7 @@ public:
 
     //Getters
     virtual std::string getType() const;
-    virtual char getSafeType() const;
+    virtual char getSaveType() const;
     unsigned short getNbRooms() const;
     unsigned int getFloor() const;
     bool getGarage() const;

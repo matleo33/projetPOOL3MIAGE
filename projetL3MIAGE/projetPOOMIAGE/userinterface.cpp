@@ -359,7 +359,7 @@ std::vector<RealEstate> UserInterface::researchRealEstateWithType(char realEstat
     std::vector<RealEstate> result;
     for(std::pair<RealEstate*,Seller> it : m_agency->getRealEstates())
     {
-        if(it.first->getSafeType() == realEstateType)
+        if(it.first->getSaveType() == realEstateType)
         {
             result.push_back(*it.first);
         }

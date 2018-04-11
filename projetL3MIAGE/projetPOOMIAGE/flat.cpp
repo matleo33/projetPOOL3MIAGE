@@ -1,12 +1,9 @@
 #include "flat.h"
 
-Flat::Flat(std::string address, short surface, unsigned int price, Seller s, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding)
-    :RealEstate(price, address, surface, s), m_nbRooms(nbRooms), m_floor(floor), m_garage(garage), m_cellar(cellar), m_balcony(balcony), m_nbFlatsInBuilding(nbFlatsInBuilding)
+Flat::Flat(std::string address, short surface, unsigned int price, Seller seller, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding)
+    :RealEstate(price, address, surface, seller), m_nbRooms(nbRooms), m_floor(floor), m_garage(garage), m_cellar(cellar), m_balcony(balcony), m_nbFlatsInBuilding(nbFlatsInBuilding)
 {
-//    m_address = address;
-//    m_surface = surface;
-//    m_price = price;
-//    m_seller = s;
+
 }
 
 std::string Flat::getType() const
@@ -14,7 +11,7 @@ std::string Flat::getType() const
     return "flat";
 }
 
-char Flat::getSafeType() const
+char Flat::getSaveType() const
 {
     return 'a';
 }

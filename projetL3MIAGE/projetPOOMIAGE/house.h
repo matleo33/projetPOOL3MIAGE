@@ -13,14 +13,14 @@ private:
 public:
     //Constructors
     House() = delete;
-    House(unsigned short nbRooms, bool swimmingPool, bool garage);
+    House(std::string address, short surface, unsigned int price, Seller s, unsigned short nbRooms, bool swimmingPool, bool garage);
 
     //Getters
     unsigned short getNbRooms() const;
     bool hasSwimmingPool() const;
     bool hasGarage() const;
     virtual std::string getType() const;
-    virtual char getSafeType() const;
+    virtual char getSaveType() const;
 
     //Setters
     void setNbRooms(unsigned short nbRooms);

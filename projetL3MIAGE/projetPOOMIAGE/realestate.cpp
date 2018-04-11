@@ -48,7 +48,7 @@ std::string RealEstate::getType() const
     return "real estate";
 }
 
-char RealEstate::getSafeType() const
+char RealEstate::getSaveType() const
 {
     return 'r';
 }
