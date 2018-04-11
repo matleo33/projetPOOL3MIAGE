@@ -143,8 +143,8 @@ void Agency::openBuyers()
 
 Flat Agency::openFlat(std::vector<std::string> infos)
 {
-//    Flat f(infos[1], infos[2], infos[3], infos[4]/*getHisID*/, infos[5], infos[6], infos[7], infos[8], infos[9], infos[10]);
-//    return f;
+    Flat f(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), findSeller(infos[4]), std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]), std::stoi(infos[8]), std::stoi(infos[9]), std::stoi(infos[10]));
+    return f;
 }
 
 void Agency::openRealEstates()
@@ -173,6 +173,15 @@ void Agency::openRealEstates()
         }
     } else {
         std::cerr << "Can not open buyers.txt" << std::endl;
+    }
+}
+
+Seller Agency::findSeller(std::string id) const
+{
+    for(Seller s : m_sellers) {
+        if(s.getId() == std::stoi(id)) {
+            return s;
+        }
     }
 }
 
