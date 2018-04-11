@@ -181,16 +181,22 @@ void UserInterface::addRealEstate()
             } while (!isNumber(floor));
 
             bool garage;
+            std::string stringGarage;
             std::cout << "Has your flat a garage? (1 for yes, 0 for no)" << std::endl;
-            std::cin >> garage;
+            std::cin >> stringGarage;
+            garage = std::stoi(stringGarage);
 
             bool cellar;
+            std::string stringCellar;
             std::cout << "Has your flat a cellar? (1 for yes, 0 for no)" << std::endl;
-            std::cin >> cellar;
+            std::cin >> stringCellar;
+            cellar = std::stoi(stringCellar);
 
             bool balcony;
+            std::string stringBalcony;
             std::cout << "Has your flat a balcony? (1 for yes, 0 for no)" << std::endl;
-            std::cin >> balcony;
+            std::cin >> stringBalcony;
+            balcony = std::stoi(stringBalcony);
 
             std::string nbFlatBuilding;
             std::cout << "How many flats are in the building ?" << std::endl;
@@ -212,12 +218,16 @@ void UserInterface::addRealEstate()
             } while (!isNumber(nbRooms));
 
             bool swimmingPool;
+            std::string stringSwimmingPool;
             std::cout << "Has the house got a swimming pool? (1 for yes, 0 for no)" << std::endl;
-            std::cin >> swimmingPool;
+            std::cin >> stringSwimmingPool;
+            swimmingPool = std::stoi(stringSwimmingPool);
 
             bool garage;
+            std::string stringGarage;
             std::cout << "Has the house got a garage? (1 for yes, 0 for no)" << std::endl;
-            std::cin >> garage;
+            std::cin >> stringGarage;
+            garage = std::stoi(stringGarage);
 
             House *h = new House(address, std::stoi(surface), std::stoi(price), seller, std::stoi(nbRooms), swimmingPool, garage);
             m_agency->addRealEstate(seller, h);
@@ -226,8 +236,10 @@ void UserInterface::addRealEstate()
         case 3:
         {
             bool constructible;
+            std::string stringConstructible;
             std::cout << "Is the plot constructible? (1 for yes, 0 for no)"<< std::endl;
-            std::cin >> constructible;
+            std::cin >> stringConstructible;
+            constructible = std::stoi(stringConstructible);
 
             Plot *p = new Plot(constructible, std::stoi(price), address, std::stoi(surface), seller);
             m_agency->addRealEstate(seller, p);
@@ -240,8 +252,11 @@ void UserInterface::addRealEstate()
             std::cin >> windowSizeSquareMeters;
 
             bool materialStorageRoom;
+            std::string stringMaterialStorageRoom;
             std::cout << "Has the local a room for the storage of material? (1 for yes, 0 for no)" << std::endl;
-            std::cin >> materialStorageRoom;
+            std::cin >> stringMaterialStorageRoom;
+            materialStorageRoom = std::stoi(stringMaterialStorageRoom);
+
             ProfessionalLocal *pl = new ProfessionalLocal(std::stoi(windowSizeSquareMeters), materialStorageRoom, std::stoi(price),address, std::stoi(surface), seller);
             m_agency->addRealEstate(seller, pl);
             break;
