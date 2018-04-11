@@ -26,7 +26,7 @@ void UserInterface::addCustomer()
     std::cout << "What is the address of the new customer?" << std::endl;
     std::getline(std::cin, address);
 
-    std::cout << "Does the new customer want to buy a real estate (press 1 and validate) or to sell one (press 2 and validate)?" << std::endl;
+    std::cout << "Does the new customer want to buy a real estate ? (press 1 and validate), does he want to sell ? (press 2 and validate)" << std::endl;
     do {
         std::cin >> type;
     } while (type != "1" && type != "2");
@@ -129,7 +129,6 @@ Seller UserInterface::chooseSeller()
 
 void UserInterface::addRealEstate()
 {
-    //Out of the method displaying an error message
     if (m_agency->getSellers().size() == 0)
     {
         std::cout << "There is not any sellers, you can not add a real estate." << std::endl;
@@ -157,7 +156,7 @@ void UserInterface::addRealEstate()
         std::cout << "What is the address of the real estate?" << std::endl;
         std::getline(std::cin, address);
 
-        std::cout << "What is the surface available of this real estate?" << std::endl;
+        std::cout << "What is the surface available for this real estate?" << std::endl;
         do {
             std::cin >> surface;
         }  while (!isNumber(surface));
@@ -169,7 +168,7 @@ void UserInterface::addRealEstate()
         case 1:
         {
             std::string rooms;
-            std::cout << "How many rooms is the flat composed by?" << std::endl;
+            std::cout << "How many rooms is the flat composed of?" << std::endl;
             do {
                 std::cin >> rooms;
             } while (!isNumber(rooms));
@@ -212,7 +211,7 @@ void UserInterface::addRealEstate()
         case 2 :
         {
             std::string nbRooms;
-            std::cout << "How many rooms does compose the house?" << std::endl;
+            std::cout << "How many rooms is the house composed of?" << std::endl;
             do {
                 std::cin >> nbRooms;
             } while (!isNumber(nbRooms));
@@ -253,7 +252,8 @@ void UserInterface::addRealEstate()
 
             bool materialStorageRoom;
             std::string stringMaterialStorageRoom;
-            std::cout << "Has the local a room for the storage of material? (1 for yes, 0 for no)" << std::endl;
+
+            std::cout << "Does the local have a room for storing materials? (1 for yes, 0 for no)" << std::endl;
             std::cin >> stringMaterialStorageRoom;
             materialStorageRoom = std::stoi(stringMaterialStorageRoom);
 
@@ -423,17 +423,17 @@ void UserInterface::searchRealEstate()
 
     //Ask for budget max
     //Ask for type of real estate (or various)
-    //Ask for superficy min max
+    //Ask for superficy min / max
     //Ask for typical stuff related to the type chosen (Example : A balcony for a Flat)
     std::vector<RealEstate> resultResearch;
     unsigned int budget;
     std::string superficyMin;
     std::string superficyMax;
     char realEstateType;
-    std::cout << "Press b and valid for back to the menu !" << std::endl;
+    std::cout << "Press b and valid to return to the menu !" << std::endl;
     std::cout<< "1) What is your max budget" << std::endl;
     std::cout<< "2) What type of real estate are you looking for ?" << std::endl;
-    std::cout<< "3) With superficy ?" << std::endl;
+    std::cout<< "3) What superficy ?" << std::endl;
 
     std::cin >> m_research;
 
@@ -483,7 +483,7 @@ void UserInterface::searchRealEstate()
     }
     if(resultResearch.empty())
     {
-        std::cout << "No real estate correspond to your demand" << std::endl;
+        std::cout << "No real estate corresponds to your demand" << std::endl;
     }
 
 }

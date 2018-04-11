@@ -26,3 +26,13 @@ void Plot::setConstructible(bool newConstructible)
 {
     this->m_constructible = newConstructible;
 }
+
+void Plot::display() const{
+    std::cout << "This is a local sold by " << m_seller.getFirstName() << " " << m_seller.getName() << std::endl;
+    std::cout << "This local is located at " << m_address << std::endl;
+    std::cout << "It is sold for $" << m_price << std::endl;
+    if (m_constructible)
+    {
+        std::cout << "The plot is constructible" << std::endl;
+    }
+}

@@ -24,6 +24,9 @@ public:
     //Setters
     void setMaterialStorageRoom(bool newMaterialStorageRoom);
     void setWindowSizeSquareMeters(int newWindowSizeSquareMeters);
+
+    //Other method
+    void display() const;
 };
 
 #endif // PROFESSIONALLOCAL_H

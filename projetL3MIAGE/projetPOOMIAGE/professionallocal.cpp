@@ -39,4 +39,14 @@ void ProfessionalLocal::setWindowSizeSquareMeters(int newWindowSizeSquareMeters)
     m_windowSizeSquareMeters = newWindowSizeSquareMeters;
 }
 
+void ProfessionalLocal::display() const{
+    std::cout << "This is a local sold by " << m_seller.getFirstName() << " " << m_seller.getName() << std::endl;
+    std::cout << "This local is located at " << m_address << std::endl;
+    std::cout << "It is sold for $" << m_price << std::endl;
+    if (m_materialStorageRoom)
+    {
+        std::cout << "It has a storage room." << std::endl;
+    }
+    std::cout << "The square meter size for the window is " << m_windowSizeSquareMeters << std::endl;
+}
 

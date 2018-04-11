@@ -20,6 +20,9 @@ public:
 
     //Setters
     void setConstructible(bool constructible);
+
+    //Other Method
+    void display() const;
 };
 
 #endif // PLOT_H
