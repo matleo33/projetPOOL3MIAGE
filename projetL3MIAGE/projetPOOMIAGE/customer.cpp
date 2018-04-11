@@ -28,7 +28,7 @@ std::string Customer::getAddress() const
 
 int Customer::getId() const
 {
-    return m_id;
+    return m_identifier;
 }
 
 void Customer::setName(std::string newName)

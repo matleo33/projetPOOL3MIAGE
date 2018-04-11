@@ -71,31 +71,33 @@ void Agency::saveRealEstates()
                 file_realEstates << "a:" << f->getAddress() << ":" << f->getSurface() << ":" << f->getPrice() << ":"
                                  << f->getSeller().getId() << ":" << f->getNbRooms() << ":" << f->getFloor()
                                  << ":" << f->getGarage() << ":" << f->getCellar() << ":" << f->getBalcony() << ":"
-                                 << f->getNbFlatsInBuilding();
+                                 << f->getNbFlatsInBuilding() << "\n";
 
             } else if(it.first->getSaveType() == 'l') {
                 ProfessionalLocal *pl = dynamic_cast<ProfessionalLocal*>(it.first);
                 file_realEstates << "l:" << pl->getWindowSizeSquareMeters() << ":" << pl->getMaterialStorageRoom()
                                  << ":" << pl->getPrice() << ":" << pl->getAddress() << ":" << pl->getSurface()
-                                 << ":" << pl->getSeller().getId();
+                                 << ":" << pl->getSeller().getId() << "\n";
 
             } else if(it.first->getSaveType() == 'm') {
                 House *h = dynamic_cast<House*>(it.first);
                 file_realEstates << "h:" << h->getPrice() << ":" << h->getAddress() << ":" << h->getSurface() << ":"
                                  << h->getSeller().getId() << ":" << h->getNbRooms() << ":"
-                                 << h->hasSwimmingPool() << ":" << h->hasGarage();
+                                 << h->hasSwimmingPool() << ":" << h->hasGarage() << "\n";
 
             } else if (it.first->getSaveType() == 't') {
                 Plot *p = dynamic_cast<Plot*>(it.first);
                 file_realEstates << "t:" << p->getPrice() << ":" << p->getAddress() << ":" << p->getSurface() << ":"
-                                 << p->getSeller().getId() << ":" << p->getConstructible();
+                                 << p->getSeller().getId() << ":" << p->getConstructible() << "\n";
 
             } else {
                 //comportement en cas d'erreur ?
             }
         }
+        file_realEstates.close();
+    } else {
+        std::cerr << "Can not open realEstates.txt" << std::endl;
     }
-    file_realEstates.close();
 }
 
 void Agency::open()
@@ -144,7 +146,6 @@ void Agency::openBuyers()
 void Agency::openFlat(std::vector<std::string> infos)
 {
     Seller s = findSeller(infos[4]);
-    //Flat *f; //= new Flat(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), s, std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]), std::stoi(infos[8]), std::stoi(infos[9]), std::stoi(infos[10]));
     Flat *f = new Flat(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), s, std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]), std::stoi(infos[8]), std::stoi(infos[9]), std::stoi(infos[10]));
     addRealEstate(s, f);
 }
