@@ -16,6 +16,7 @@ class UserInterface
 {
 private:
     bool m_quit;
+    bool m_backToMenu;
     std::string m_request;
     std::string m_research;
     Agency *m_agency;

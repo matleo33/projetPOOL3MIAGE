@@ -1,7 +1,7 @@
 #include "userinterface.h"
 
 UserInterface::UserInterface(Agency *agency)
-    :m_quit(false), m_agency(agency)
+    :m_quit(false), m_agency(agency),m_backToMenu(false)
 {
 
 }
@@ -412,20 +412,19 @@ void UserInterface::searchRealEstate()
     //Ask for typical stuff related to the type chosen (Example : A balcony for a Flat)
     std::vector<RealEstate> resultResearch;
     unsigned int budget;
-    int superficyMin;
-    int superficyMax;
+    std::string superficyMin;
+    std::string superficyMax;
     char realEstateType;
     std::cout << "Press b and valid for back to the menu !" << std::endl;
     std::cout<< "1) What is your max budget" << std::endl;
     std::cout<< "2) What type of real estate are you looking for ?" << std::endl;
     std::cout<< "3) With superficy ?" << std::endl;
-    std::cout<< "4) NTM ON FAIT CA PLUS TARD" << std::endl;
 
     std::cin >> m_research;
 
     if (m_research == "b" || m_research == "back")
     {
-        listen();
+        m_backToMenu = true;
     }
     else if(m_research == "1")
     {
@@ -445,13 +444,17 @@ void UserInterface::searchRealEstate()
     {
         std::cout<< "Min superficy" << std::endl;
         std::cin >> superficyMin;
+        while(!isNumber(superficyMin))
+        {
+            std::cin >> superficyMin;
+        }
         std::cout<< "Max superficy" << std::endl;
         std::cin >> superficyMax;
-        resultResearch = researchRealEstateWithSuperficy(superficyMin, superficyMax);
-    }
-    else if(m_research == "4")
-    {
-
+        while(!isNumber(superficyMax))
+        {
+            std::cin >> superficyMax;
+        }
+        resultResearch = researchRealEstateWithSuperficy(std::stoi(superficyMin), std::stoi(superficyMax));
     }
     else
     {
@@ -462,6 +465,10 @@ void UserInterface::searchRealEstate()
         std::cout << "The " << re.getType() << " n°" << re.getIdentifier() << " is available for $";
         std::cout << re.getPrice() << " and is sold by " << re.getSeller().getFirstName();
         std::cout << " " << re.getSeller().getName() << std::endl;
+    }
+    if(resultResearch.empty())
+    {
+        std::cout << "No real estate correspond to your demand" << std::endl;
     }
 
 }
@@ -533,9 +540,12 @@ void UserInterface::listen()
         }
         else if (m_request == "9")
         {
-            system("clear");
-            searchRealEstate();
-            system("clear");
+            while(!m_backToMenu)
+            {
+                system("clear");
+                searchRealEstate();
+                system("clear");
+            }
         }
         else if (m_request == "10")
         {
