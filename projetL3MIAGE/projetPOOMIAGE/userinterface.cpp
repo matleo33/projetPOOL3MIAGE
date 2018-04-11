@@ -397,7 +397,6 @@ void UserInterface::searchRealEstate()
     std::cout<< "1) What is your max budget" << std::endl;
     std::cout<< "2) What type of real estate are you looking for ?" << std::endl;
     std::cout<< "3) With superficy ?" << std::endl;
-    std::cout<< "4) NTM ON FAIT CA PLUS TARD" << std::endl;
 
     std::cin >> m_research;
 
@@ -434,10 +433,6 @@ void UserInterface::searchRealEstate()
             std::cin >> superficyMax;
         }
         resultResearch = researchRealEstateWithSuperficy(std::stoi(superficyMin), std::stoi(superficyMax));
-    }
-    else if(m_research == "4")
-    {
-
     }
     else
     {
