@@ -70,8 +70,8 @@ void Agency::saveRealEstates()
                 Flat *f = dynamic_cast<Flat*>(it.first);
                 file_realEstates << "a:" << f->getAddress() << ":" << f->getSurface() << ":" << f->getPrice() << ":"
                                  << f->getSeller().getId() << ":" << f->getNbRooms() << ":" << f->getFloor()
-                                 << ":" << f->getGarage() << ":" << f->getGarage() << ":" << f->getCellar()
-                                 << ":" << f->getBalcony() << ":" << f->getNbFlatsInBuilding();
+                                 << ":" << f->getGarage() << ":" << f->getCellar() << ":" << f->getBalcony() << ":"
+                                 << f->getNbFlatsInBuilding();
 
             } else if(it.first->getSaveType() == 'l') {
                 ProfessionalLocal *pl = dynamic_cast<ProfessionalLocal*>(it.first);
@@ -150,6 +150,7 @@ Flat Agency::openFlat(std::vector<std::string> infos)
 void Agency::openRealEstates()
 {
     std::ifstream file_realEstates("../save/realEstates.txt", std::ios::in);
+    system("pwd");
     if(file_realEstates) {
         std::string content;
         while(std::getline(file_realEstates, content)) {
@@ -172,7 +173,7 @@ void Agency::openRealEstates()
 
         }
     } else {
-        std::cerr << "Can not open buyers.txt" << std::endl;
+        std::cerr << "Can not open realEstates.txt" << std::endl;
     }
 }
 
