@@ -54,6 +54,9 @@ public:
     void openSellers();
     void openBuyers();
     void openFlat(std::vector<std::string> infos);
+    void openProfessionalLocal(std::vector<std::string> infos);
+    void openHouse(std::vector<std::string> infos);
+    void openPlot(std::vector<std::string> infos);
     void openRealEstates();
     void open();
     std::vector<std::string> split(std::string stringToSplit, char separator);

@@ -81,17 +81,15 @@ void Agency::saveRealEstates()
 
             } else if(it.first->getSaveType() == 'm') {
                 House *h = dynamic_cast<House*>(it.first);
-                file_realEstates << "h:" << h->getPrice() << ":" << h->getAddress() << ":" << h->getSurface() << ":"
+                file_realEstates << "m:" << h->getAddress() << ":" << h->getSurface() << ":" << h->getPrice() << ":"
                                  << h->getSeller().getId() << ":" << h->getNbRooms() << ":"
                                  << h->hasSwimmingPool() << ":" << h->hasGarage() << "\n";
 
             } else if (it.first->getSaveType() == 't') {
                 Plot *p = dynamic_cast<Plot*>(it.first);
-                file_realEstates << "t:" << p->getPrice() << ":" << p->getAddress() << ":" << p->getSurface() << ":"
-                                 << p->getSeller().getId() << ":" << p->getConstructible() << "\n";
+                file_realEstates << "t:" << p->getConstructible() << ":" << p->getPrice() << ":" << p->getAddress() << ":"
+                                 << p->getSurface() << ":" << p->getSeller().getId() << "\n";
 
-            } else {
-                //comportement en cas d'erreur ?
             }
         }
         file_realEstates.close();
@@ -150,6 +148,27 @@ void Agency::openFlat(std::vector<std::string> infos)
     addRealEstate(s, f);
 }
 
+void Agency::openProfessionalLocal(std::vector<std::string> infos)
+{
+    Seller s = findSeller(infos[6]);
+    ProfessionalLocal *pl = new ProfessionalLocal(std::stoi(infos[1]), std::stoi(infos[2]), std::stoi(infos[3]), infos[4], std::stoi(infos[5]), s);
+    addRealEstate(s, pl);
+}
+
+void Agency::openHouse(std::vector<std::string> infos)
+{
+    Seller s = findSeller(infos[4]);
+    House *h = new House(infos[1], std::stoi(infos[2]), std::stoi(infos[3]), s, std::stoi(infos[5]), std::stoi(infos[6]), std::stoi(infos[7]));
+    addRealEstate(s, h);
+}
+
+void Agency::openPlot(std::vector<std::string> infos)
+{
+    Seller s = findSeller(infos[5]);
+    Plot *p = new Plot(std::stoi(infos[1]),std::stoi(infos[2]), infos[3], std::stoi(infos[4]), s);
+    addRealEstate(s, p);
+}
+
 void Agency::openRealEstates()
 {
     std::ifstream file_realEstates("../save/realEstates.txt", std::ios::in);
@@ -157,18 +176,15 @@ void Agency::openRealEstates()
         std::string content;
         while(std::getline(file_realEstates, content)) {
             std::vector<std::string> realEstate_infos = split(content,':');
-            if(realEstate_infos[0] == "a")
-            {
+            if(realEstate_infos[0] == "a"){
                 openFlat(realEstate_infos);
-                //open Flat
             } else if(realEstate_infos[0] == "l") {
-                //open professionnal local
+                openProfessionalLocal(realEstate_infos); //crash
             } else if(realEstate_infos[0] == "m") {
-                //open house
+                openHouse(realEstate_infos);
             } else if(realEstate_infos[0] == "t") {
-                //open plot
+                openPlot(realEstate_infos);
             } else {
-                //Comportement en cas d'erreur ?
             }
 
 
