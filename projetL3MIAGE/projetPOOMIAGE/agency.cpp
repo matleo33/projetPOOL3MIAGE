@@ -184,11 +184,7 @@ void Agency::openRealEstates()
                 openHouse(realEstate_infos);
             } else if(realEstate_infos[0] == "t") {
                 openPlot(realEstate_infos);
-            } else {
             }
-
-
-
         }
     } else {
         std::cerr << "Can not open realEstates.txt" << std::endl;
