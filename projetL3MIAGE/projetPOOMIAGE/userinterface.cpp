@@ -976,7 +976,7 @@ void UserInterface::displayMenu() const
     std::cout << "10) Set informations about a real estate" << std::endl;
     std::cout << "11) Remove a seller" << std::endl;
     std::cout << "12) Remove a buyer" << std::endl;
-    std::cout << "13) Remove a real estate" << std::endl;
+    std::cout << "13) Remove a real estate (which we hope, is sent and not destroyed)" << std::endl;
     std::cout << "14) Search for the real estate of your dreams" << std::endl;
     std::cout << "15) Other stuff" << std::endl;
 }
