@@ -838,6 +838,7 @@ void UserInterface::searchRealEstate()
             }
         } else if(resultResearch.size()==0) {
             std::cout << "We don't have any real estate available" << std::endl;
+            insearch = false;
         } else {
             std::cout << "Press b and valid to return to the menu !" << std::endl;
             std::cout << "Press d and valid to display all the user estates you want !" << std::endl;
