@@ -52,7 +52,7 @@ public:
     void addSeller(Seller *s);
     void removeBuyer();
     void removeSeller();
-    void removeRealEstate(RealEstate re);
+    void removeRealEstate(RealEstate *re);
     void sell(RealEstate *re);
 
     //save methods

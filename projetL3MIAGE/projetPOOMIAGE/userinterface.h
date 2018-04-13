@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <limits>
+#include <unistd.h>
 
 #include "agency.h"
 #include "buyer.h"
@@ -26,7 +27,7 @@ private:
 
     Seller * chooseSeller();
     Buyer * chooseBuyer();
-    RealEstate chooseRealEstate(Seller *s);
+    RealEstate * chooseRealEstate(Seller *s);
 public:
     UserInterface() = delete;
     UserInterface(Agency *agency);
@@ -44,10 +45,10 @@ public:
     void displayRealEstates() const;
     void displaySeller();
     void displayBuyer();
-    //display a real estate
-    //Modify buyer
-    //Modify seller (?)
-    //Modify real estate
+
+    void setInfoBuyer();
+    void setInfoSeller();
+    void setInfoRealEstate();
 
     void addCustomer();
     void addRealEstate();
@@ -63,6 +64,8 @@ public:
     void researchRealEstateWithBudget(unsigned int budget, std::vector<RealEstate *> result);
 
     bool isNumber(std::string str);
+
+    void otherStuff();
 
 };
 

@@ -306,7 +306,7 @@ void Agency::removeSeller()
     m_sellers.erase(m_sellers.begin()+std::stoi(choice) - 1);
 }
 
-void Agency::removeRealEstate(RealEstate re)
+void Agency::removeRealEstate(RealEstate * re)
 {
-    m_realEstates.erase(m_realEstates.find(&re));
+    m_realEstates.erase(m_realEstates.find(re));
 }

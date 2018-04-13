@@ -74,3 +74,23 @@ void RealEstate::displayElem() const
     std::cout << "This real estate is sold for " << m_price << std::endl;
     std::cout << m_address << std::endl;
 }
+
+void RealEstate::setAddress(std::string newAddress)
+{
+    m_address = newAddress;
+}
+
+void RealEstate::setPrice(int newPrice)
+{
+    m_price = newPrice;
+}
+
+void RealEstate::setSeller(Seller *newSeller)
+{
+    m_seller = newSeller;
+}
+
+void RealEstate::setSurface(int newSurface)
+{
+    m_surface = newSurface;
+}

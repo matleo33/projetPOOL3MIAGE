@@ -29,6 +29,10 @@ public:
     virtual char getSaveType() const;
 
     //Setters
+    void setPrice(int newPrice);
+    void setAddress(std::string newAddress);
+    void setSurface(int newSurface);
+    void setSeller(Seller * newSeller);
 
     //Operator
     bool operator<(const RealEstate & re) const;
