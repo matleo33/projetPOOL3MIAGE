@@ -148,6 +148,7 @@ void Agency::openFlat(std::vector<std::string> infos)
     addRealEstate(s, f);
 }
 
+
 void Agency::openRealEstates()
 {
     std::ifstream file_realEstates("../save/realEstates.txt", std::ios::in);
