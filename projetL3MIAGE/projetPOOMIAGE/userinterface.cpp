@@ -180,6 +180,7 @@ void UserInterface::addRealEstate()
             std::cin >> surface;
         }  while (!isNumber(surface));
 
+        std::cout << "Please choose a seller in the following list" << std::endl;
         seller = chooseSeller();
 
         switch (std::stoi(type))
