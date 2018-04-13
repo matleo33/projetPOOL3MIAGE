@@ -15,7 +15,7 @@ private:
     unsigned int m_nbFlatsInBuilding;
 public:
     Flat() = default;
-    Flat(std::string address, short surface, unsigned int price, Seller s, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
+    Flat(std::string address, short surface, unsigned int price, Seller *s, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding);
 
     //Getters
     virtual std::string getType() const;
@@ -37,6 +37,7 @@ public:
 
     //Other Methods
     void display() const;
+    void displayElem() const;
 };
 
 #endif // FLAT_H

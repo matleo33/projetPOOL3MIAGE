@@ -39,3 +39,13 @@ void Buyer::displayVisits() const
         std::cout << this->m_firstName << " " << this->m_name << " didn't visit any real estate." << std::endl;
     }
 }
+
+void Buyer::display()
+{
+    std::cout << "Mr./Mrs. " << m_firstName << " " << m_name << " is living at " << m_address << std::endl;
+    if (m_purchaseProposal)
+    {
+        std::cout << "Mr./Mrs." << m_firstName << " " << m_name << " has already made a purchase purposal." << std::endl;
+    }
+    displayVisits();
+}

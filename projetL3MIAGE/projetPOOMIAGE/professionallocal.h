@@ -13,7 +13,7 @@ public:
     //Constructors
     ProfessionalLocal();
     ProfessionalLocal(unsigned short windowSizeSquareMeters, bool materialStorageRoom,
-                      unsigned int price, std::string address, short surface, Seller seller);
+                      unsigned int price, std::string address, short surface, Seller *seller);
 
     //Getters
     virtual std::string getType() const;
@@ -24,6 +24,10 @@ public:
     //Setters
     void setMaterialStorageRoom(bool newMaterialStorageRoom);
     void setWindowSizeSquareMeters(int newWindowSizeSquareMeters);
+
+    //Other method
+    void display() const;
+    void displayElem() const;
 };
 
 #endif // PROFESSIONALLOCAL_H

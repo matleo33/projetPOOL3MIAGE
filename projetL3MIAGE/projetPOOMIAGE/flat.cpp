@@ -1,6 +1,6 @@
 #include "flat.h"
 
-Flat::Flat(std::string address, short surface, unsigned int price, Seller seller, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding)
+Flat::Flat(std::string address, short surface, unsigned int price, Seller *seller, unsigned short nbRooms, unsigned int floor, bool garage, bool cellar, bool balcony, unsigned int nbFlatsInBuilding)
     :RealEstate(price, address, surface, seller), m_nbRooms(nbRooms), m_floor(floor), m_garage(garage), m_cellar(cellar), m_balcony(balcony), m_nbFlatsInBuilding(nbFlatsInBuilding)
 {
 
@@ -78,8 +78,29 @@ void Flat::setNbFlatsInBuilding(unsigned int newNbFlatsInBuilding)
 
 void Flat::display() const
 {
-    std::cout << "This is a flat sold by " << m_seller.getFirstName() << " " << m_seller.getName() << std::endl;
+    std::cout << "This is a flat sold by " << m_seller->getFirstName() << " " << m_seller->getName() << std::endl;
     std::cout << "This flat is located at " << m_address << std::endl;
+    std::cout << "It is sold for $" << m_price << std::endl;
+    std::cout << "Its surface is " << m_surface << " divided in " << m_nbRooms << " rooms." << std::endl;
+    std::cout << "It is at the floor n° " << m_floor << std::endl;
+    if (m_garage)
+    {
+        std::cout << "It has a garage." << std::endl;
+    }
+    if (m_cellar)
+    {
+        std::cout << "It has a cellar." << std::endl;
+    }
+    if (m_balcony)
+    {
+        std::cout << "It also has a balcony." << std::endl;
+    }
+    std::cout << "In the building, we can count " << m_nbFlatsInBuilding << " flats" << std::endl;
+}
+
+void Flat::displayElem() const
+{
+    std::cout << "This real estate is a flat located at " << m_address << std::endl;
     std::cout << "It is sold for $" << m_price << std::endl;
     std::cout << "Its surface is " << m_surface << " divided in " << m_nbRooms << " rooms." << std::endl;
     std::cout << "It is at the floor n° " << m_floor << std::endl;

@@ -2,7 +2,7 @@
 
 int RealEstate::nextId = 0;
 
-RealEstate::RealEstate(unsigned int price, std::string address, unsigned short surface, Seller seller)
+RealEstate::RealEstate(unsigned int price, std::string address, unsigned short surface, Seller *seller)
     :m_price(price), m_address(address), m_surface(surface), m_seller(seller)
 {
     m_identifier = RealEstate::nextId++;
@@ -33,7 +33,7 @@ short RealEstate::getSurface() const
     return m_surface;
 }
 
-Seller RealEstate::getSeller() const
+Seller* RealEstate::getSeller() const
 {
     return m_seller;
 }
@@ -65,5 +65,12 @@ bool RealEstate::operator==(const RealEstate & re) const
 
 void RealEstate::display() const
 {
-    std::cout << "BECAUSE THIS IS MY REAL ESTAAAAAAATE" << std::endl;
+    std::cout << "This real estate is sold for " << m_price << std::endl;
+    std::cout << m_address << std::endl;
+}
+
+void RealEstate::displayElem() const
+{
+    std::cout << "This real estate is sold for " << m_price << std::endl;
+    std::cout << m_address << std::endl;
 }

@@ -11,7 +11,7 @@ private:
 
 public:
     Plot() = delete;
-    Plot(bool constructible,unsigned int price, std::string address, short surface, Seller seller);
+    Plot(bool constructible, unsigned int price, std::string address, short surface, Seller *seller);
     virtual std::string getType() const;
     virtual char getSaveType() const;
 
@@ -20,6 +20,10 @@ public:
 
     //Setters
     void setConstructible(bool constructible);
+
+    //Other Method
+    void display() const;
+    void displayElem() const;
 };
 
 #endif // PLOT_H

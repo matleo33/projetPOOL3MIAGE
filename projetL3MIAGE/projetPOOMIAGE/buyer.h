@@ -24,6 +24,8 @@ public:
     //Other Methods
     void addVisit(Visit v);
     void displayVisits() const;
+
+    void display();
 };
 
 #endif // BUYER_H

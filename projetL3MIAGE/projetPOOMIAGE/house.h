@@ -13,7 +13,7 @@ private:
 public:
     //Constructors
     House() = delete;
-    House(std::string address, short surface, unsigned int price, Seller s, unsigned short nbRooms, bool swimmingPool, bool garage);
+    House(std::string address, short surface, unsigned int price, Seller *s, unsigned short nbRooms, bool swimmingPool, bool garage);
 
     //Getters
     unsigned short getNbRooms() const;
@@ -29,6 +29,7 @@ public:
 
     //Other Methods
     void display() const;
+    void displayElem() const;
 };
 
 #endif // HOUSE_H
